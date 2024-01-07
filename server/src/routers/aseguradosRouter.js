@@ -7,22 +7,13 @@ import AseguradosManager from '../dao/managerAsegurados.js';
 const aseguradosRouter = Router();
 const aseguradoManager = new AseguradosManager();
 
-const genericControllerAsegurados = new CRUDController(aseguradoManager, 'Bien creado correctamente');
+// tengo que crear un objeto con mensajes para todo el CRUD
+const genericControllerAsegurados = new CRUDController(aseguradoManager, 'Bien creado correctamente'); 
 
-aseguradosRouter.post('/', async (req, res) => {
-	await genericControllerAsegurados.create(req, res);
-});
+aseguradosRouter.post('/', genericControllerAsegurados.create);
+aseguradosRouter.get('/all', buildQueryMiddleware, genericControllerAsegurados.getAll);
+aseguradosRouter.get('/', buildQueryMiddleware, genericControllerAsegurados.getOne);
+aseguradosRouter.put('/', buildQueryMiddleware, genericControllerAsegurados.update);
 
-aseguradosRouter.get('/all', buildQueryMiddleware, async (req, res) => {
-	await genericControllerAsegurados.getAll(req, res);
-});
-
-aseguradosRouter.get('/', buildQueryMiddleware, async (req, res) => {
-	await genericControllerAsegurados.getOne(req, res);
-});
-
-aseguradosRouter.put('/', buildQueryMiddleware, async (req, res) => {
-	await genericControllerAsegurados.update(req, res);
-});
 
 export default aseguradosRouter;

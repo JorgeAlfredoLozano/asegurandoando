@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Router } from 'express';
 import { buildQueryMiddleware } from '../middleware/buildQueryMiddleware.js';
 import CRUDController from '../controllers/CRUDController.js';
@@ -9,20 +8,9 @@ const bienManager = new BienesManager();
 
 const genericControllerBienes = new CRUDController(bienManager, 'Bien creado correctamente');
 
-bienesRouter.post('/', async (req, res) => {
-	await genericControllerBienes.create(req, res);
-});
-
-bienesRouter.get('/all', buildQueryMiddleware, async (req, res) => {
-	await genericControllerBienes.getAll(req, res);
-});
-
-bienesRouter.get('/', buildQueryMiddleware, async (req, res) => {
-	await genericControllerBienes.getOne(req, res);
-});
-
-bienesRouter.put('/', buildQueryMiddleware, async (req, res) => {
-	await genericControllerBienes.update(req, res);
-});
+bienesRouter.post('/', genericControllerBienes.create);
+bienesRouter.get('/all', buildQueryMiddleware, genericControllerBienes.getAll);
+bienesRouter.get('/', buildQueryMiddleware, genericControllerBienes.getOne);
+bienesRouter.put('/', buildQueryMiddleware, genericControllerBienes.update);
 
 export default bienesRouter;
