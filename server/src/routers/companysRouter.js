@@ -1,15 +1,28 @@
+/* eslint-disable prettier/prettier */
 import { Router } from 'express';
 import { buildQueryMiddleware } from '../middleware/buildQueryMiddleware.js';
-import createCompanyHandler from '../handlers/companysHandlers/createCompanyHandler.js';
-import getAllCompanysHandler from '../handlers/companysHandlers/getAllCompanysHandler.js';
-import getCompanyHandler from '../handlers/companysHandlers/getCompanyHandler.js';
-import updateCompanyHandler from '../handlers/companysHandlers/updateAseguradoHandler.js';
+import CRUDController from '../controllers/CRUDController.js';
+import CompanysManager from '../dao/managerCompanys.js';
 
 const companysRouter = Router();
+const companyManager = new CompanysManager();
 
-companysRouter.post('/', createCompanyHandler);
-companysRouter.get('/all', buildQueryMiddleware, getAllCompanysHandler);
-companysRouter.get('/', buildQueryMiddleware, getCompanyHandler);
-companysRouter.put('/', buildQueryMiddleware, updateCompanyHandler);
+const genericControllerCompanys = new CRUDController(companyManager, 'Compañía de seguros creada correctamente');
+
+companysRouter.post('/', async (req, res) => {
+	await genericControllerCompanys.create(req, res);
+});
+
+companysRouter.get('/all', buildQueryMiddleware, async (req, res) => {
+	await genericControllerCompanys.getAll(req, res);
+});
+
+companysRouter.get('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerCompanys.getOne(req, res);
+});
+
+companysRouter.put('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerCompanys.update(req, res);
+});
 
 export default companysRouter;

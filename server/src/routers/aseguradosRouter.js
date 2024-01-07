@@ -1,28 +1,28 @@
+/* eslint-disable prettier/prettier */
 import { Router } from 'express';
 import { buildQueryMiddleware } from '../middleware/buildQueryMiddleware.js';
-// import createAseguradoHandler from '../handlers/aseguradosHandlers/createAseguradoHandler.js';
-// import getAseguradoHandler from '../handlers/aseguradosHandlers/getAseguradoHandler.js';
-// import getAllAseguradosHandler from '../handlers/aseguradosHandlers/getAllAseguradosHandler.js';
-// import updateAseguradoHandler from '../handlers/aseguradosHandlers/updateAseguradoHandler.js';
-import GenericHandler from '../handlers/genericHandler.js';
+import CRUDController from '../controllers/CRUDController.js';
 import AseguradosManager from '../dao/managerAsegurados.js';
 
 const aseguradosRouter = Router();
 const aseguradoManager = new AseguradosManager();
 
-const createGenericHandlerAsegurados = new GenericHandler(
-	aseguradoManager,
-	'Asegurado creado correctamente'
-);
-const handleCreateAsegurado = async (req, res) => {
-	await createGenericHandlerAsegurados.handleCreate(req, res);
-};
+const genericControllerAsegurados = new CRUDController(aseguradoManager, 'Bien creado correctamente');
 
-aseguradosRouter.post('/', handleCreateAsegurado);
+aseguradosRouter.post('/', async (req, res) => {
+	await genericControllerAsegurados.create(req, res);
+});
 
-// aseguradosRouter.post('/', createAseguradoHandler);
-// aseguradosRouter.get('/all', buildQueryMiddleware, getAllAseguradosHandler);
-// aseguradosRouter.get('/', buildQueryMiddleware, getAseguradoHandler);
-// aseguradosRouter.put('/', buildQueryMiddleware, updateAseguradoHandler);
+aseguradosRouter.get('/all', buildQueryMiddleware, async (req, res) => {
+	await genericControllerAsegurados.getAll(req, res);
+});
+
+aseguradosRouter.get('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerAsegurados.getOne(req, res);
+});
+
+aseguradosRouter.put('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerAsegurados.update(req, res);
+});
 
 export default aseguradosRouter;

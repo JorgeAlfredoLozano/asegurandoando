@@ -1,39 +1,28 @@
 /* eslint-disable prettier/prettier */
 import { Router } from 'express';
 import { buildQueryMiddleware } from '../middleware/buildQueryMiddleware.js';
-// import createBienHandler from '../handlers/bienesHandlers/createBienHandler.js';
-// import getAllBienesHandler from '../handlers/bienesHandlers/getAllBienesHandler.js';
-// import getBienHandler from '../handlers/bienesHandlers/getBienHandler.js';
-import HandlerGeneric from '../handlers/genericHandler.js';
+import CRUDController from '../controllers/CRUDController.js';
 import BienesManager from '../dao/managerBienes.js';
 
 const bienesRouter = Router();
 const bienManager = new BienesManager();
 
-const createHandlerBienes = new HandlerGeneric(bienManager, 'Bien creado correctamente');
-const handleCreateBienes = async (req, res) => {
-	await createHandlerBienes.handleCreate(req, res);
-};
+const genericControllerBienes = new CRUDController(bienManager, 'Bien creado correctamente');
 
-const getOneHandlerBien = new HandlerGeneric(bienManager, 'El bien se ha encontrado correctamente');
-const handleGetOneBien = async (req, res) => {
-	await getOneHandlerBien.handleGetOne(req, res);
-};
+bienesRouter.post('/', async (req, res) => {
+	await genericControllerBienes.create(req, res);
+});
 
-const getAllHandlerBienes = new HandlerGeneric(bienManager, 'Se encontraron los siguientes bienes.');
-const handleGetAllBienes = async (req, res) => {
-	await getAllHandlerBienes.handleGetAll(req, res);
-};
+bienesRouter.get('/all', buildQueryMiddleware, async (req, res) => {
+	await genericControllerBienes.getAll(req, res);
+});
 
-const updateHandlerBienes = new HandlerGeneric(bienManager, 'Se han actualizado los datos correctamente.');
-const handleUpdateBienes = async (req, res) => {
-	await updateHandlerBienes.handleUpdate(req, res);
-};
+bienesRouter.get('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerBienes.getOne(req, res);
+});
 
-// bienesRouter.post('/', createBienHandler);
-bienesRouter.post('/', handleCreateBienes);
-bienesRouter.get('/all', buildQueryMiddleware, handleGetAllBienes);
-bienesRouter.get('/', buildQueryMiddleware, handleGetOneBien);
-bienesRouter.put('/', buildQueryMiddleware, handleUpdateBienes);
+bienesRouter.put('/', buildQueryMiddleware, async (req, res) => {
+	await genericControllerBienes.update(req, res);
+});
 
 export default bienesRouter;
