@@ -71,6 +71,16 @@ class CompanysManager {
 			throw new Error(`Error al actualizar la compañía de seguros: ${error.message}`);
 		}
 	}
+
+	async deleteCompany(filter) {
+		try {
+			const companyDelete = await this.deleteDocument('companysCollection', filter);
+			return companyDelete;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al intentar eliminar la compañía de seguros: ${error.message}`);
+		}
+	}
 }
 
 export default CompanysManager;

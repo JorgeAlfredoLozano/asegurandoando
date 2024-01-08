@@ -88,6 +88,16 @@ class AseguradosManager {
 			throw new Error(`Error al actualizar el asegurado: ${error.message}`);
 		}
 	}
+
+	async deleteAsegurado(filter) {
+		try {
+			const aseguradoDelete = await this.deleteDocument('aseguradosCollection', filter);
+			return aseguradoDelete;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al intentar eliminar el asegurado: ${error.message}`);
+		}
+	}
 }
 
 export default AseguradosManager;

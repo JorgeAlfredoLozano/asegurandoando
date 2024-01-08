@@ -91,6 +91,16 @@ class PolizasManager {
 			throw new Error(`Error al actualizar la póliza de seguro: ${error.message}`);
 		}
 	}
+
+	async deletePoliza(filter) {
+		try {
+			const polizaDelete = await this.deleteDocument('polizasCollection', filter);
+			return polizaDelete;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al intentar eliminar la póliza: ${error.message}`);
+		}
+	}
 }
 
 export default PolizasManager;

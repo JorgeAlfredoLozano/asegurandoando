@@ -67,6 +67,16 @@ class BienesManager {
 			throw new Error(`Error al actualizar el bien asegurado: ${error.message}`);
 		}
 	}
+
+	async deleteBien(filter) {
+		try {
+			const bienDelete = await this.deleteDocument('bienesCollection', filter);
+			return bienDelete;
+		} catch (error) {
+			console.error(error);
+			throw new Error(`Error al intentar eliminar el bien: ${error.message}`);
+		}
+	}
 }
 
 export default BienesManager;
