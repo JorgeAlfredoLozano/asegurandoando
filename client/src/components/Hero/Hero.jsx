@@ -1,5 +1,7 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import NavbarButton from "../NavbarButton/NavbarButton.jsx";
+import NavbarButton from "../Header/NavbarButton";
 import { useNavigate } from 'react-router-dom'
 
 const Hero = ({ events }) => {
