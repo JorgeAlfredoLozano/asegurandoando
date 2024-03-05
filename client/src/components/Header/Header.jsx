@@ -24,13 +24,13 @@ const Header = () => {
       {/* <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:mt-0 md:pt-0 md:mr-4 lg:mr-8 md:border-0"> */}
       <ul className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0">
       <li>
-          <a className="block ml-12 px-4 py-1 md:p-2 lg:px-4" href="#" title="Link">Asistencia al Viajero</a>
+          <a className="block px-4 py-1 md:p-2 lg:px-4" href="#" title="Seguros para viajes">Asistencia al Viajero</a>
         </li>
         <li>
           <a className="block px-4 py-1 md:p-2 lg:px-4" href="#" title="Link">Seguros</a>
         </li>
         <li>
-          <a className="block px-4 py-1 md:p-2 lg:px-4 text-purple-600" href="#" title="Active Link">Gestoría</a>
+          <a className="block px-4 py-1 md:p-2 lg:px-4" href="#" title="Link" >Gestoría</a>
         </li>
         <li>
           <a className="block px-4 py-1 md:p-2 lg:px-4" href="#" title="Link">Compañías</a>
