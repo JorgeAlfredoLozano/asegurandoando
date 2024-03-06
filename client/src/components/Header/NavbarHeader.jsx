@@ -8,18 +8,23 @@ function NavbarHeader({ className, isLogged }) {
       dataTest: "link_inicio",
     },
     {
-      text: "Novedades",
-      route: "/News",
-      dataTest: "link_novedades",
+      text: "Asistencia al Viajero",
+      route: "/asistencia",
+      dataTest: "link_asistencia",
     },
     {
-      text: "Crear Eventos",
-      route: "/CreateEvent",
+      text: "Seguros",
+      route: "/Seguros",
       dataTest: "link_crear-eventos",
     },
     {
-      text: "Quiénes Somos",
-      route: "/About",
+      text: "Gestoría",
+      route: "/Gestoria",
+      dataTest: "link_quienes-somos",
+    },
+    {
+      text: "Contacto",
+      route: "/Contacto",
       dataTest: "link_quienes-somos",
     },
   ];

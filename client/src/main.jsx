@@ -5,7 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
-
+import Asistencia from "./components/Pages/Asistencia/Asistencia";
+import Contacto from "./components/Pages/Contacto/Contacto";
 import "./index.css";
 
 
@@ -19,12 +20,20 @@ const router = createBrowserRouter([
         element: <Home />,
       },
       // {
-      //   path: "/detail",
-      //   element: <Detail />,
+      //   path: "/asistencia",
+      //   element: <Asistencia />,
+      // },
+      {
+        path: "/contacto",
+        element: <Contacto />,
+      },
+      // {
+      //   path: "/seguros",
+      //   element: <Seguros />,
       // },
       {
         path: "*",
-        element: <h2>Ya casi hacemos esa pagina, paciencia 🤓</h2>,
+        element: <h1>Estamos trabajando en esta página, por cualquier consulta dirijase a contacto. 😀</h1>,
       },
     ],
   },
