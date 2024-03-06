@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
+    "@react-google-maps/api": "^2.19.3",
     "axios": "^1.6.2",
+    "emailjs-com": "^3.2.0",
     "eslint-config-standard-react": "^13.0.0",
     "framer-motion": "^10.16.9",
     "lucide-react": "^0.293.0",

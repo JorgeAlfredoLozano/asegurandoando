@@ -1,12 +1,13 @@
 import React from "react";
-import { FaCarAlt, FaMotorcycle, FaTruckMoving, FaHome, FaStore } from "react-icons/fa";
+import { FaCarAlt, FaMotorcycle, FaTruckMoving, FaHome, FaStore, FaPlane } from "react-icons/fa";
 
 const categories = [
+  { icon: FaPlane, description: "Viajes"},
   { icon: FaCarAlt, description: "Autos" },
   { icon: FaMotorcycle, description: "Motos" },
   { icon: FaTruckMoving, description: "Transporte" },
   { icon: FaHome, description: "Hogar" },
-  { icon: FaStore, description: "Comercio" },
+  { icon: FaStore, description: "Comercio" }
 ];
 
 export default function Categories() {

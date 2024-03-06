@@ -7,7 +7,7 @@ import logo from "../../assets/LOGOweb.png";
 function Footer() {
 
   return (
-<footer className="bg-black">
+<footer className="bg-gradient-to-b from-black to-secondary-1">
   <div className="max-w-screen-xl px-4 py-16 mx-auto sm:px-6 lg:px-8">
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
       <div>
