@@ -42,7 +42,9 @@ export default {
         loadIn: "loadIn 7s linear",
       },
       theme: {
-        extend: {},
+        extend: {borderRadius: {
+          '50': '50px',
+        },},
       },
     },
   },

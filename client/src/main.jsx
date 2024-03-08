@@ -1,14 +1,14 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-
+import ReactDOM from "react-dom";
+import { store } from "./redux/store.js";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
+import { ThemeProvider } from "@material-tailwind/react";
 import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Asistencia from "./components/Pages/Asistencia/Asistencia";
 import Contacto from "./components/Pages/Contacto/Contacto";
 import "./index.css";
-
 
 const router = createBrowserRouter([
   {
@@ -19,10 +19,10 @@ const router = createBrowserRouter([
         index: true,
         element: <Home />,
       },
-      // {
-      //   path: "/asistencia",
-      //   element: <Asistencia />,
-      // },
+      {
+        path: "/asistencia",
+        element: <Asistencia />,
+      },
       {
         path: "/contacto",
         element: <Contacto />,
@@ -33,14 +33,24 @@ const router = createBrowserRouter([
       // },
       {
         path: "*",
-        element: <h1>Estamos trabajando en esta página, por cualquier consulta dirijase a contacto. 😀</h1>,
+        element: (
+          <h1>
+            Estamos trabajando en esta página, por cualquier consulta dirijase a
+            contacto. 😀
+          </h1>
+        ),
       },
     ],
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+    <ThemeProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeProvider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
