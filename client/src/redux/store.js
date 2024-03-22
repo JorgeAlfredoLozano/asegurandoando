@@ -1,8 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "./slices/cotizarSlice";
+import cotizarReducer from "./slices/cotizarSlice";
+import segurosReducer from "./slices/segurosSlice";
 
 export const store = configureStore({
   reducer: { 
-    cotizar: userReducer,
+    cotizar: cotizarReducer,
+    seguros: segurosReducer,
   }
 });
