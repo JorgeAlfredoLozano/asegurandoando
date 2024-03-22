@@ -8,6 +8,7 @@ import Layout from "./components/Layout/Layout";
 import Home from "./components/Home/Home";
 import Asistencia from "./components/Pages/Asistencia/Asistencia";
 import Contacto from "./components/Pages/Contacto/Contacto";
+import Seguros from "./components/Pages/Seguros/Seguros.jsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -27,10 +28,10 @@ const router = createBrowserRouter([
         path: "/contacto",
         element: <Contacto />,
       },
-      // {
-      //   path: "/seguros",
-      //   element: <Seguros />,
-      // },
+      {
+        path: "/seguros",
+        element: <Seguros />,
+      },
       {
         path: "*",
         element: (

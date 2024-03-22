@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   cotizacion: {
-    destino: "",
+    destino: "Sudamerica",
     fechaIda: null,
     fechaVuelta: null,
     cantPasajeros: []
