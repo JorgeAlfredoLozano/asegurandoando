@@ -9,7 +9,7 @@ const Header = () => {
     <nav className="bg-gradient-to-b from-black to-secondary-1 text-primary-1 shadow" role="navigation">
   <div className="container mx-auto p-4 flex flex-wrap items-center md:flex-no-wrap">
     <div className="mr-4 md:mr-8">
-      <a href="#" rel="home">
+      <a href="/" rel="home">
         <img src={logo} alt="Asegurando Ando" className="w-50 h-20" />
       </a>
     </div>

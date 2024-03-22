@@ -18,21 +18,19 @@ const CotizarButton = () => {
   const cotizacion = useSelector(selectCotizacion);
   const dispatch = useDispatch();
   const fechaActual = new Date();
-  const fechaIda = new Date(cotizacion.fechaIda);
-  const fechaVuelta = new Date(cotizacion.fechaVuelta);
-
+  const fechaIda = cotizacion.fechaIda;
+  const fechaVuelta = cotizacion.fechaVuelta;
+  
+  
   const handleCotizarClick = () => {
-    if (cotizacion.destino !== "") {
-      setmostrarMensaje("Por favor, elija un destino corecto.");
-      return;
-    } else if (cotizacion.cantPasajeros.length == 0) {
-      setmostrarMensaje("La cantidad de pasajeros debe se mayor a cero");
+    if (cotizacion.cantPasajeros.length == 0) {
+      setmostrarMensaje(`La cantidad de pasajeros debe se mayor a cero`);
     } else if (fechaVuelta < fechaIda) {
       setmostrarMensaje(
-        "La fecha de regreso debe ser mayor a la fecha de salida."
+        `La fecha de regreso debe ser mayor a la fecha de salida.`
       );
     } else if (fechaIda < fechaActual) {
-      setmostrarMensaje("La fecha de salida debe ser mayor a la decha de hoy.");
+      setmostrarMensaje(`La fecha de salida debe ser mayor a la decha de hoy.`);
     } else {
       setMostrarPopup(true);
     }
@@ -82,7 +80,6 @@ const CotizarButton = () => {
       !mostrarCruz.telefono &&
       !mostrarCruz.email
     ) {
-      alert("MANDO EMAIL");
       emailjs
         .send("service_cwze3jl", "template_vgh47ra", message, "NOJB7y0wM8LRLnFeY")
         .then((response) => {
@@ -142,7 +139,7 @@ const CotizarButton = () => {
   onChange={(e) => setContacto(e.target.value)}
   className="block w-full p-2 border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm mb-2"
 >
-  <option value="whatsapp" selected>Contacto x Whatsapp</option>
+  <option defaultValue="whatsapp">Contacto x Whatsapp</option>
   <option value="llamada">Contacto x Llamada</option>
   <option value="email">Contacto x Email</option>
 </select>

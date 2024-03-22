@@ -27,12 +27,12 @@ const Asistencia = () => {
       </div>
 
       <PromocionesSection />
-
-      <div className="bg-gray-200">
-        <AcercaDe inverted />
-      </div>
-
-      <Frase />
+        <div className="bg-gray-200">
+          <AcercaDe inverted />
+        </div>
+        <div className="h-full">
+          <Frase />
+        </div>
 
     </div>
   );
