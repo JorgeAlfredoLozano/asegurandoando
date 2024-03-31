@@ -11,7 +11,7 @@ export const Card = (dataCard) => {
           <div className="flex flex-row items-center gap-2 text-primary-5 text-xs">
             <p>{dataCard.date}</p>
             <svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" viewBox="0 0 5 5" fill="none">
-              <circle cx="2.5" cy="2.5" r="2.5" fill="#828D9E" />
+              {/* <circle cx="2.5" cy="2.5" r="2.5" fill="#828D9E" /> */}
             </svg>
             <p>{dataCard.location}</p>
           </div>

@@ -1,52 +1,99 @@
-import { MdArrowRight } from "react-icons/md";
+import React, { useRef } from "react";
+import { MdArrowRight, MdArrowLeft } from "react-icons/md";
 import { Card } from "../navbarItem/cards";
-import image1 from "../../assets/2x1assist.png";
-import image2 from "../../assets/todoriesgo.png";
-import image3 from "../../assets/motos.png";
-import image4 from "../../assets/AP.png";
+import image1 from "../../assets/1.png";
+import image2 from "../../assets/2.png";
+import image3 from "../../assets/3.png";
+import image4 from "../../assets/4.png";
+import image5 from "../../assets/5.png";
+import image6 from "../../assets/6.png";
 
 export default function Promociones() {
   const cardData = [
     {
       photo: image1,
-      title: "2x1 con Assist Card",
-      date: "hasta 29 de febrero de 2024",
-      location: "Assist Card",
+      title: "",
+      date: "",
+      location: "",
     },
     {
       photo: image2,
-      title: "hasta 70% OFF",
-      date: "hasta 30 de marzo de 2024",
-      location: "Sancor Seguros",
+      title: "",
+      date: "",
+      location: "",
     },
     {
       photo: image3,
-      title: "cuotas fijas",
-      date: "hasta 30 de marzo de 2024",
-      location: "Copán Seguros",
+      title: "",
+      date: "",
+      location: "",
     },
     {
       photo: image4,
-      title: "Protección para el trabajador",
-      date: "hasta 30 de marzo de 2024",
-      location: "Sancor Seguros",
+      title: "",
+      date: "",
+      location: "",
+    },
+    {
+      photo: image5,
+      title: "",
+      date: "",
+      location: "",
+    },
+    {
+      photo: image6,
+      title: "",
+      date: "",
+      location: "",
     },
   ];
 
-  const renderedCards = cardData.map((data, index) => (
-    <Card key={index} {...data} />
-  ));
+  const scrollRef = useRef(null);
+
+  const handleScrollLeft = () => {
+    scrollRef.current.scrollLeft -= scrollRef.current.offsetWidth;
+  };
+
+  const handleScrollRight = () => {
+    scrollRef.current.scrollLeft += scrollRef.current.offsetWidth;
+  };
 
   return (
     <div className="p-20 bg-white">
-      <h1 className="text-3xl font-medium mb-5">Descuentos y Beneficios</h1>
-      <div className="flex justify-end mb-4 font-poppins font-medium">
-        <button className="flex items-center">
-          Ver todo <MdArrowRight size={20} />
+      <div className="flex justify-center mb-4 font-poppins font-medium">
+        <button
+          className="flex items-center"
+          onClick={handleScrollLeft}
+          disabled={scrollRef.current?.scrollLeft === 0}
+        >
+          <MdArrowLeft size={40} />
         </button>
-      </div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-        {renderedCards}
+        <div
+          ref={scrollRef}
+          className="flex space-x-4 overflow-x-auto"
+          style={{
+            scrollBehavior: "smooth",
+            width: "calc(100% - 80px)", // Restamos el ancho total de los botones de navegación
+            maxWidth: "1200px", // Limitamos el ancho máximo para mantener la capacidad de respuesta
+            overflowX: "hidden",
+          }}
+        >
+          {cardData.map((data, index) => (
+            <div key={index} className="flex-shrink-0 w-64">
+              <Card {...data} />
+            </div>
+          ))}
+        </div>
+        <button
+          className="flex items-center"
+          onClick={handleScrollRight}
+          disabled={
+            scrollRef.current?.scrollLeft ===
+            scrollRef.current?.scrollWidth - scrollRef.current?.offsetWidth
+          }
+        >
+          <MdArrowRight size={40} />
+        </button>
       </div>
     </div>
   );
