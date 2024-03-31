@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect }  from "react";
 import DestinoMenu from "./Seccion1/DestinoMenu";
 import FechaDatePicker from "./Seccion1/FechaDatePicker";
 import PasajerosPopup from "./Seccion1/PasajerosPopup";
@@ -8,6 +8,9 @@ import AcercaDe from "./Seccion3/AcercaDe";
 import Frase from "./Seccion4/Frase";
 
 const Asistencia = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
   return (
     <div>
       <div className="bg-cover bg-center bg-no-repeat flex flex-col justify-center items-center md:h-screen" 
