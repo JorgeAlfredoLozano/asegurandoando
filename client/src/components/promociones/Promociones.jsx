@@ -59,7 +59,7 @@ export default function Promociones() {
   };
 
   return (
-    <div className="p-20 bg-white">
+    <div className="bg-white">
       <div className="flex justify-center mb-4 font-poppins font-medium">
         <button
           className="flex items-center"
@@ -73,8 +73,7 @@ export default function Promociones() {
           className="flex space-x-4 overflow-x-auto"
           style={{
             scrollBehavior: "smooth",
-            width: "calc(100% - 80px)", // Restamos el ancho total de los botones de navegación
-            maxWidth: "1200px", // Limitamos el ancho máximo para mantener la capacidad de respuesta
+            maxWidth: "1200px",
             overflowX: "hidden",
           }}
         >
