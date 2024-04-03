@@ -5,43 +5,48 @@ import { HiHome, HiBriefcase, HiPhone, HiMail } from "react-icons/hi";
 import { FcHome } from "react-icons/fc";
 import { FcAssistant } from "react-icons/fc";
 import { FcAutomotive,FcCollaboration,FcFeedback   } from "react-icons/fc";
+import menuInicio from "../../assets/menu-inicio.png";
+import menuAsistencia from "../../assets/menu-asistencia.png";
+import menuSeguros from "../../assets/menu-seguros.png";
+import menuGestoria from "../../assets/menu-gestoria.png";
+import menuContacto from "../../assets/menu-contacto.png";
 
 function NavbarHeader({ className, isLogged }) {
   const items = [
     {
       text: "Inicio",
-      textRed:"I",
+      textRed:"Inicio",
       route: "/",
       dataTest: "link_inicio",
-      icon: <FcHome className="w-10 h-10" />,
+      icon: <img src={menuInicio} className="w-10 h-10" />,
     },
     {
       text: "Asistencia al Viajero",
-      textRed:"AV",
+      textRed:"Asistencia",
       route: "/asistencia",
       dataTest: "link_asistencia",
-      icon: <FcAssistant className="w-10 h-10" />,
+      icon: <img src={menuAsistencia} className="w-10 h-10" />,
     },
     {
       text: "Seguros",
-      textRed:"S",
+      textRed:"Seguros",
       route: "/Seguros",
       dataTest: "link_crear-eventos",
-      icon: <FcAutomotive className="w-10 h-10" />,
+      icon: <img src={menuSeguros} className="w-10 h-10" />,
     },
     {
       text: "Gestoría",
-      textRed:"G",
+      textRed:"Gestoría",
       route: "/Gestoria",
       dataTest: "link_quienes-somos",
-      icon: <FcCollaboration  className="w-10 h-10" />,
+      icon: <img src={menuGestoria}  className="w-10 h-10" />,
     },
     {
       text: "Contacto",
-      textRed:"C",
+      textRed:"Contacto",
       route: "/Contacto",
       dataTest: "link_quienes-somos",
-      icon: <FcFeedback  className="w-10 h-10" />,
+      icon: <img src={menuContacto}  className="w-10 h-10" />,
     },
   ];
   const navigate = useNavigate();
