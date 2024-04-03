@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavbarHeader from "./NavbarHeader";
 import logo from "../../assets/LOGOweb.png";
@@ -6,6 +6,19 @@ import whatsappIcon from "../../assets/whatsapp-icon.png";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "5492281531457";
@@ -26,24 +39,16 @@ const Header = () => {
             <img src={logo} alt="Asegurando Ando" className="w-50 h-20" />
           </a>
         </div>
+        {isMobile ? (<img
+            onClick={handleWhatsAppClick}
+            src={whatsappIcon}
+            alt="WhatsApp"
+            className="cursor-pointer ml-12 md:ml-3 w-14 h-14 hover:h-12 hover:w-12"
+          />) : null}
         <div className="w-full md:w-auto md:flex-grow md:flex md:items-center">
           <NavbarHeader className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0" />
         </div>
-        {/* <div className="ml-auto md:hidden">
-          <button
-            className="flex items-center px-3 py-2 border rounded"
-            type="button"
-          >
-            <svg
-              className="h-3 w-3"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-            </svg>
-          </button>
-        </div> */}
+
       </div>
     </nav>
   );
