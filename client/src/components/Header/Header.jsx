@@ -26,7 +26,10 @@ const Header = () => {
             <img src={logo} alt="Asegurando Ando" className="w-50 h-20" />
           </a>
         </div>
-        <div className="ml-auto md:hidden">
+        <div className="w-full md:w-auto md:flex-grow md:flex md:items-center">
+          <NavbarHeader className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0" />
+        </div>
+        {/* <div className="ml-auto md:hidden">
           <button
             className="flex items-center px-3 py-2 border rounded"
             type="button"
@@ -40,16 +43,7 @@ const Header = () => {
               <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
             </svg>
           </button>
-        </div>
-        <div className="w-full md:w-auto md:flex-grow md:flex md:items-center">
-          <NavbarHeader className="flex flex-col mt-4 -mx-4 pt-4 border-t md:flex-row md:items-center md:mx-0 md:ml-auto md:mt-0 md:pt-0 md:border-0" />
-          <img
-            onClick={handleWhatsAppClick}
-            src={whatsappIcon}
-            alt="WhatsApp"
-            className="cursor-pointer ml-4 md:ml-3 w-8 h-8 hover:h-12 hover:w-12"
-          />
-        </div>
+        </div> */}
       </div>
     </nav>
   );
