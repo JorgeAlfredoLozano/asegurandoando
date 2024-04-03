@@ -1,15 +1,12 @@
 import NavBarItem from "./NavbarItem";
 import whatsappIcon from "../../assets/whatsapp-icon.png";
 import { useNavigate } from "react-router-dom";
-import { HiHome, HiBriefcase, HiPhone, HiMail } from "react-icons/hi"; 
-import { FcHome } from "react-icons/fc";
-import { FcAssistant } from "react-icons/fc";
-import { FcAutomotive,FcCollaboration,FcFeedback   } from "react-icons/fc";
 import menuInicio from "../../assets/menu-inicio.png";
 import menuAsistencia from "../../assets/menu-asistencia.png";
 import menuSeguros from "../../assets/menu-seguros.png";
 import menuGestoria from "../../assets/menu-gestoria.png";
 import menuContacto from "../../assets/menu-contacto.png";
+import React, { useState, useEffect } from "react";
 
 function NavbarHeader({ className, isLogged }) {
   const items = [
@@ -50,6 +47,19 @@ function NavbarHeader({ className, isLogged }) {
     },
   ];
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   const handleWhatsAppClick = () => {
     const phoneNumber = "5492281531457";
@@ -78,12 +88,12 @@ function NavbarHeader({ className, isLogged }) {
         className={`list-none flex gap-5 items-center justify-evenly flex-wrap lg:justify-center`}
       >
         {renderNavItems()}
-        <img
+        {!isMobile ? (<img
             onClick={handleWhatsAppClick}
             src={whatsappIcon}
             alt="WhatsApp"
             className="cursor-pointer ml-4 md:ml-3 w-10 h-10 hover:h-12 hover:w-12"
-          />
+          />):(null)}
       </ul>
     </nav>
   );
