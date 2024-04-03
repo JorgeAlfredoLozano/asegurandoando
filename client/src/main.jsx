@@ -9,6 +9,7 @@ import Home from "./components/Home/Home";
 import Asistencia from "./components/Pages/Asistencia/Asistencia";
 import Contacto from "./components/Pages/Contacto/Contacto";
 import Seguros from "./components/Pages/Seguros/Seguros.jsx";
+import Autos from "./components/Pages/Seguros/Seccion2/Autos.jsx"
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/asistencia",
         element: <Asistencia />,
+      },
+      {
+        path: "/autos",
+        element: <Autos />,
       },
       {
         path: "/contacto",
