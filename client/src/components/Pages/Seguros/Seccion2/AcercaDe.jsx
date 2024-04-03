@@ -22,8 +22,10 @@ const AcercaDe = () => {
           lo que más valoras. Desde seguros para autos, hogar, motos, hasta
           coberturas para accidentes personales, salud, viajes, ART, y mucho
           más, estamos aquí para asegurarnos de que encuentres la protección
-          adecuada para tus necesidades individuales. En un mundo lleno de
-          imprevistos, entendemos la importancia de estar preparados y
+          adecuada para tus necesidades individuales. 
+        </p>
+        <p className="text-lg text-gray-700 leading-relaxed">
+          En un mundo lleno de imprevistos, entendemos la importancia de estar preparados y
           protegidos en todo momento. Es por eso que nos enorgullece ofrecer un
           servicio personalizado, donde puedes contactarnos a través de
           WhatsApp, correo electrónico o llamada telefónica para recibir una
@@ -33,7 +35,7 @@ const AcercaDe = () => {
 
       {/* Tercer y cuarto cuadrante combinados */}
       <div className="lg:col-span-2">
-        <p className="text-lg text-gray-700 leading-relaxed mt-4">
+        <p className="text-lg text-gray-700 leading-relaxed mt-0">
         Nuestro equipo de
           expertos está disponible para brindarte un asesoramiento completo y
           personalizado, asegurándonos de que comprendas todas las opciones
