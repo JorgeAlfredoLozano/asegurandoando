@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaCarAlt, FaMotorcycle, FaTruckMoving, FaHome, FaStore, FaPlane } from "react-icons/fa";
+import { FaCarAlt, FaMotorcycle, FaTruckMoving, FaHome, FaStore, FaPlane,FaPeopleCarry  } from "react-icons/fa";
+import { GiHealthCapsule } from "react-icons/gi";
 
 const categories = [
   { icon: FaPlane, description: "Viajes", link: "/asistencia" },
@@ -8,7 +9,9 @@ const categories = [
   { icon: FaMotorcycle, description: "Motos", link: "/autos" },
   { icon: FaTruckMoving, description: "Transporte", link: "/transporte" },
   { icon: FaHome, description: "Hogar", link: "/hogar" },
-  { icon: FaStore, description: "Comercio", link: "/comercio" }
+  { icon: FaStore, description: "Comercio", link: "/comercio" },
+  { icon: FaPeopleCarry, description: "AP", link: "/ap" },
+  { icon: GiHealthCapsule, description: "Salud", link: "/salud" },
 ];
 
 const Categories = () => {

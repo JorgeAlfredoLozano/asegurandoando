@@ -1,8 +1,8 @@
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-import mapa from "../../../../assets/ubicacion.png";
-import whatsappIcon from "../../../../assets/whatsapp-icon.png";
-import mail from "../../../../assets/mail.png";
+import mapa from "../../../assets/ubicacion.png";
+import whatsappIcon from "../../../assets/whatsapp-icon.png";
+import mail from "../../../assets/mail.png";
 
 const Popup = ({ message, onClose }) => (
     <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
@@ -19,7 +19,7 @@ const Popup = ({ message, onClose }) => (
   );
   
 
-const Autos = () => {
+const Contacto = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
     Nombre: "",
@@ -29,8 +29,6 @@ const Autos = () => {
     Marca: "",
     Modelo: "",
     Anio: "",
-    Cp:"",
-    Localidad:"",
     ok: false,
   });
   const [popupVisible, setPopupVisible] = useState(false);
@@ -81,8 +79,6 @@ const Autos = () => {
           Marca: ${formData.Marca}
           Modelo: ${formData.Modelo}
           Año: ${formData.Anio}
-          Cp: ${formData.Cp}
-          Localidad: ${formData.Localidad}
         `,
       };
 
@@ -127,7 +123,7 @@ const Autos = () => {
     <div className="container mx-auto p-4 flex flex-col md:flex-row justify-center">
       {popupVisible && <Popup message={popupMessage} onClose={closePopup} />}
       <div className="w-full md:w-1/2 md:pr-2">
-        <h1 className="text-2xl font-bold mb-4">COTIZACION DE AUTOS Y MOTOS</h1>
+        <h1 className="text-2xl font-bold mb-4">CONTACTENOS</h1>
         <form ref={form} onSubmit={sendEmail}>
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 pr-2">
@@ -168,7 +164,7 @@ const Autos = () => {
               formData.Email === "" ? "border-red-500" : "border-gray-300"
             } rounded-md`}
           />
-          <label htmlFor="Mensaje">Mensaje:</label>
+          <label htmlFor="Mensaje">Consulta:</label>
           <textarea
             id="Mensaje"
             name="Mensaje"
@@ -178,98 +174,7 @@ const Autos = () => {
               formData.Mensaje === "" ? "border-red-500" : "border-gray-300"
             } rounded-md`}
           ></textarea>
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 pr-2">
-              <label htmlFor="Marca">Marca:</label>
-              <input
-                type="text"
-                id="Marca"
-                name="Marca"
-                placeholder="Ford"
-                value={formData.Marca}
-                onChange={handleChange}
-                className={`block w-full p-2 border ${
-                  formData.Marca === "" ? "border-red-500" : "border-gray-300"
-                } rounded-md`}
-              />
-            </div>
-            <div className="md:w-1/2 pr-2">
-              <label htmlFor="Modelo">Modelo:</label>
-              <input
-                type="text"
-                id="Modelo"
-                name="Modelo"
-                placeholder="Ranger LTX 4x2"
-                value={formData.Modelo}
-                onChange={handleChange}
-                className={`block w-full p-2 border ${
-                  formData.Modelo === "" ? "border-red-500" : "border-gray-300"
-                } rounded-md`}
-                title="Ingrese el modelo tal cual figura en la cédula."
-              />
-            </div>
-            <div className="md:w-1/2">
-              <label htmlFor="Anio">Año:</label>
-              <input
-                type="text"
-                id="Anio"
-                name="Anio"
-                placeholder="2018"
-                value={formData.Anio}
-                onChange={handleChange}
-                className={`block w-full p-2 border ${
-                  formData.Anio === "" ? "border-red-500" : "border-gray-300"
-                } rounded-md`}
-                title="Ingrese el año del vehículo."
-              />
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row">
-
-          <div className="md:w-1/4 pr-2">
-              <label htmlFor="Cp">CP:</label>
-              <input
-                type="text"
-                id="Cp"
-                name="Cp"
-                placeholder="7600"
-                value={formData.Cp}
-                onChange={handleChange}
-                className={`block w-full p-2 border ${
-                  formData.Cp === "" ? "border-red-500" : "border-gray-300"
-                } rounded-md`}
-                title="Ingrese el año del vehículo."
-              />
-            </div>
-            <div className="md:w-3/4">
-              <label htmlFor="Anio">Localidad del Riesgo:</label>
-              <input
-                type="text"
-                id="Anio"
-                name="Anio"
-                placeholder="Tandil"
-                value={formData.Anio}
-                onChange={handleChange}
-                className={`block w-full p-2 border ${
-                  formData.Anio === "" ? "border-red-500" : "border-gray-300"
-                } rounded-md`}
-                title="Ingrese el año del vehículo."
-              />
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row mt-4">
-            <div className="flex items-center">
-              <label htmlFor="gnc" className="pr-2">
-                GNC:
-              </label>
-              <input type="checkbox" id="gnc" name="gnc" className="mr-2" />
-              <label htmlFor="vtv" className="pr-2">
-                VTV:
-              </label>
-              <input type="checkbox" id="vtv" name="vtv" />
-              <p className="ml-2">| Cualquier adicional extra agreguelo en el mensaje</p>
-            </div>
-          </div>
+          
           <button
             type="submit"
             className="mb-4 bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded mt-4 self-center md:self-start"
@@ -333,4 +238,4 @@ const Autos = () => {
   );
 };
 
-export default Autos;
+export default Contacto;

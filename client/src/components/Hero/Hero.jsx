@@ -44,11 +44,11 @@ const Hero = ({ events }) => {
             ))}
           </div>
           <NavbarButton
-            text="Contratá Ahora"
+            text="Cotizá Ahora"
             filled
             color="primary-1"
             line="black"
-            handler={() => navigate(`/event/${events[idSelected].id}`)}
+            handler={() => navigate(`${events[idSelected].route}`)}
           />
         </footer>
       </div>

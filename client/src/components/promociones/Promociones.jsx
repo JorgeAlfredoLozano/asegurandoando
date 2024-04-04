@@ -14,13 +14,13 @@ export default function Promociones() {
       photo: image1,
       title: "",
       date: "",
-      location: "",
+      link: "autos",
     },
     {
       photo: image2,
       title: "",
       date: "",
-      location: "",
+      link: "autos",
     },
     {
       photo: image3,
