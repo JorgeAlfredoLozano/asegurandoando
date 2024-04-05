@@ -11,6 +11,8 @@ import Contacto from "./components/Pages/Contacto/Contacto";
 import Seguros from "./components/Pages/Seguros/Seguros.jsx";
 import Autos from "./components/Pages/Seguros/Seccion2/Autos.jsx"
 import "./index.css";
+import Hogar from "./components/Pages/Seguros/Seccion2/Hogar.jsx";
+import Comercio from "./components/Pages/Seguros/Seccion2/Comercio.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
       {
         path: "/autos",
         element: <Autos />,
+      },
+      {
+        path: "/hogar",
+        element: <Hogar />,
+      },
+      {
+        path: "/comercio",
+        element: <Comercio />,
       },
       {
         path: "/contacto",

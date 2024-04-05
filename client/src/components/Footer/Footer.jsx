@@ -210,7 +210,7 @@ function Footer() {
           de María Laura Lobrundo - Productor de Seguros mat. 81581
         </p>
         <p className="flex justify-center text-xs text-blue-200">
-          Desarrollado por puntonetazul@gmail.com
+          Desarrollado por Jorge Lozano - puntonetazul@gmail.com
         </p>
       </div>
     </footer>

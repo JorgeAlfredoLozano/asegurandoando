@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export const Card = (dataCard) => {
+  const navigate = useNavigate();
     return (
       <div className="font-poppins overflow-hidden flex flex-col gap-3 p-3 shadow-md rounded-lg">
         <img
@@ -16,9 +19,10 @@ export const Card = (dataCard) => {
             <p>{dataCard.location}</p>
           </div>
         </div>
-        <button className="w-28 text-primary-4 text-sm font-semibold bg-transparent border border-primary-4 rounded-full px-6 py-2">
-          Ver más
-        </button>
+        {console.log(dataCard.link)}
+        <button onClick={() => navigate(`/${dataCard.link}`)} className="w-28 text-primary-4 text-sm font-semibold bg-transparent border border-primary-4 rounded-full px-6 py-2">
+        Cotizar
+      </button>
       </div>
     );
   };
