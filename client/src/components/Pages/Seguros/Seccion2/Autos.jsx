@@ -5,19 +5,18 @@ import whatsappIcon from "../../../../assets/whatsapp-icon.png";
 import mail from "../../../../assets/mail.png";
 
 const Popup = ({ message, onClose }) => (
-    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
-      <div className="bg-white rounded-lg p-8">
-        <p className="text-xl">{message}</p>
-        <button
-          onClick={onClose}
-          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
-        >
-          OK
-        </button>
-      </div>
+  <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+    <div className="bg-white rounded-lg p-8">
+      <p className="text-xl">{message}</p>
+      <button
+        onClick={onClose}
+        className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+      >
+        OK
+      </button>
     </div>
-  );
-  
+  </div>
+);
 
 const Autos = () => {
   const form = useRef();
@@ -29,18 +28,18 @@ const Autos = () => {
     Marca: "",
     Modelo: "",
     Anio: "",
-    Cp:"",
-    Localidad:"",
+    Cp: "",
+    Localidad: "",
+    Gnc: "NO",
+    VTV: "NO",
     ok: false,
   });
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
+  const [toHome, setToHome] = useState(false);
 
-  const handleWhatsAppClickJ = () => {
-    const phoneNumber = "5492281531457";
-    const message = "";
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+  const handleWhatsAppClick = (phoneNumber) => {
+    const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
     window.open(whatsappLink, "_blank");
   };
 
@@ -71,8 +70,8 @@ const Autos = () => {
     if (ok) {
       // Si todos los campos están completos, enviar el formulario
       const data = {
-        to_name: "Destinatario",
-        from_name: "www.asegurandoando.com cotización de AUTO",
+        to_name: "María Laura",
+        from_name: "www.asegurandoando.com.ar / cotización de AUTO",
         message: `
           Nombre: ${formData.Nombre}
           Teléfono: ${formData.Telefono}
@@ -83,26 +82,20 @@ const Autos = () => {
           Año: ${formData.Anio}
           Cp: ${formData.Cp}
           Localidad: ${formData.Localidad}
+          Gnc:${formData.Gnc}
+          VTV:${formData.VTV}
         `,
       };
 
       emailjs
-        .sendForm(
-          "service_cwze3jl",
-          "template_vgh47ra",
-          form.current,
-          "NOJB7y0wM8LRLnFeY",
-          data
-        )
+        .send("service_cwze3jl", "template_vgh47ra", data, "NOJB7y0wM8LRLnFeY")
         .then(
           (result) => {
             console.log("SUCCESS!", result.text);
-            setPopupMessage("Mensaje enviado correctamente");
+            setPopupMessage("MSolicitud de cotización enviada correctamente, en breve será contactado.");
             setPopupVisible(true);
             // Redirigir a la página principal después de 3 segundos
-            setTimeout(() => {
-              window.location.href = "/";
-            }, 3000);
+            setToHome(true);
           },
           (error) => {
             console.log("FAILED...", error.text);
@@ -112,15 +105,28 @@ const Autos = () => {
   };
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value, type, checked } = e.target;
+    if (type === "checkbox") {
+      const valueForFormData = checked ? "SI" : "NO"; 
+      console.log(valueForFormData)
+      setFormData({
+        ...formData,
+        [name]: valueForFormData,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const closePopup = () => {
     setPopupVisible(false);
+    if (toHome) {
+      // Redirigir al usuario después de cerrar la ventana emergente
+      window.location.href = "/";
+    }
   };
 
   return (
@@ -152,7 +158,9 @@ const Autos = () => {
                 value={formData.Telefono}
                 onChange={handleChange}
                 className={`block w-full p-2 border ${
-                  formData.Telefono === "" ? "border-red-500" : "border-gray-300"
+                  formData.Telefono === ""
+                    ? "border-red-500"
+                    : "border-gray-300"
                 } rounded-md`}
               />
             </div>
@@ -225,8 +233,7 @@ const Autos = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row">
-
-          <div className="md:w-1/4 pr-2">
+            <div className="md:w-1/4 pr-2">
               <label htmlFor="Cp">CP:</label>
               <input
                 type="text"
@@ -242,16 +249,16 @@ const Autos = () => {
               />
             </div>
             <div className="md:w-3/4">
-              <label htmlFor="Anio">Localidad del Riesgo:</label>
+              <label htmlFor="Localidad">Localidad del Riesgo:</label>
               <input
                 type="text"
-                id="Anio"
-                name="Anio"
+                id="Localidad"
+                name="Localidad"
                 placeholder="Tandil"
-                value={formData.Anio}
+                value={formData.Localidad}
                 onChange={handleChange}
                 className={`block w-full p-2 border ${
-                  formData.Anio === "" ? "border-red-500" : "border-gray-300"
+                  formData.Localidad === "" ? "border-red-500" : "border-gray-300"
                 } rounded-md`}
                 title="Ingrese el año del vehículo."
               />
@@ -259,15 +266,28 @@ const Autos = () => {
           </div>
           <div className="flex flex-col md:flex-row mt-4">
             <div className="flex items-center">
-              <label htmlFor="gnc" className="pr-2">
+              <label htmlFor="Gnc" className="pr-2">
                 GNC:
               </label>
-              <input type="checkbox" id="gnc" name="gnc" className="mr-2" />
-              <label htmlFor="vtv" className="pr-2">
+              <input
+                type="checkbox"
+                id="Gnc"
+                name="Gnc"
+                onChange={handleChange}
+                className="mr-2"
+              />
+              <label htmlFor="VTV" className="pr-2">
                 VTV:
               </label>
-              <input type="checkbox" id="vtv" name="vtv" />
-              <p className="ml-2">| Cualquier adicional extra agreguelo en el mensaje</p>
+              <input
+                type="checkbox"
+                id="VTV"
+                name="VTV"
+                onChange={handleChange}
+              />
+              <p className="ml-2">
+                | Cualquier adicional extra agreguelo en el mensaje
+              </p>
             </div>
           </div>
           <button
@@ -299,7 +319,7 @@ const Autos = () => {
             Laura: +54 (02281) 15531966
           </p>
           <img
-            onClick={handleWhatsAppClickL}
+            onClick={()=>handleWhatsAppClick(5492281531966)}
             src={whatsappIcon}
             alt="WhatsApp"
             className="cursor-pointer w-5 h-5 mb-4 hover:h-8 hover:w-8"
@@ -310,7 +330,7 @@ const Autos = () => {
             Jorge: +54 (02281) 15531457
           </p>
           <img
-            onClick={handleWhatsAppClickJ}
+            onClick={() => handleWhatsAppClick("5492281531457")}
             src={whatsappIcon}
             alt="WhatsApp"
             className="cursor-pointer w-5 h-5 mb-4 hover:h-8 hover:w-8"

@@ -6,6 +6,7 @@ import mail from "../../../../assets/mail.png";
 import ComboBox from "react-select";
 import { option } from "./options";
 
+/* VENTANA POPUP PARA ERRORES Y CARTELES */
 const Popup = ({ message, onClose }) => (
   <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
     <div className="bg-white rounded-lg p-8">
@@ -20,37 +21,34 @@ const Popup = ({ message, onClose }) => (
   </div>
 );
 
-const Hogar = () => {
+const Comercio = () => {
   const form = useRef();
   const [formData, setFormData] = useState({
     Nombre: "",
     Telefono: "",
     Email: "",
     Mensaje: "",
-    MetrosCub: "",
-    SumaAsegurada: "",
-    TipoVivienda: "",
-    Material: "",
-    Techo: "",
-    Cerramiento: "",
     Construccion: "",
-    SeguridadAlarma: "NO",
-    SeguridadVigilancia: "NO",
-    SeguridadBlindada: "NO",
-    SeguridadIncendio: "NO",
+    Cerramiento: "",
+    Techo: "",
+    Plantas: "1",
+    Actividad: "",
     Cp: "",
     Localidad: "",
-    AntiSismica: "",
+    SumaAseguradaIncendioContenido:"",
+    SumaAseguradaIncendioEdificio:"",
     ok: false,
   });
   const [popupVisible, setPopupVisible] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
-  const [toHome, setToHome] = useState(false)
+  const [toHome, setToHome] = useState(false);
+  const [numPlantas, setNumPlantas] = useState(1);
 
   const handleWhatsAppClick = (phoneNumber) => {
     const whatsappLink = `https://api.whatsapp.com/send?phone=${phoneNumber}`;
     window.open(whatsappLink, "_blank");
   };
+
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -60,7 +58,6 @@ const Hogar = () => {
     // Validar campos requeridos
     for (const field in formData) {
       if (formData[field] === "") {
-        // Si un campo está vacío, establecer la bandera ok en falso y mostrar mensaje de error
         ok = false;
         setPopupMessage(`El campo "${field}" es requerido`);
         setPopupVisible(true);
@@ -69,48 +66,36 @@ const Hogar = () => {
     }
 
     if (ok) {
-      // Si todos los campos están completos, enviar el formulario
-
-    const data = {
-      to_name: "María Laura",
-      from_name: "www.asegurandoando.com.ar / cotización de HOGAR",
-      message: `
+      const data = {
+        to_name: "María Laura",
+        from_name: "www.asegurandoando.com.ar / cotización de COMERCIO",
+        message: `
         Nombre: ${formData.Nombre}
         Teléfono: ${formData.Telefono}
         Correo Electrónico: ${formData.Email}
         Mensaje: ${formData.Mensaje}
-        MetrosCub: ${formData.MetrosCub},
-        SumaAsegurada:${formData.SumaAsegurada},
-        TipoVivienda: ${formData.TipoVivienda},
-        Material: ${formData.Material},
-        Techo: ${formData.Techo},
-        Cerramiento: ${formData.Cerramiento},
+        Cp:${formData.Cp}
+        Localidad:${formData.Localidad}
         Construccion: ${formData.Construccion},
-        SeguridadAlarma: ${formData.SeguridadAlarma},
-        SeguridadVigilancia: ${formData.SeguridadVigilancia},
-        SeguridadBlindada: ${formData.SeguridadBlindada},
-        SeguridadIncendio: ${formData.SeguridadIncendio},
-        AntiSismica:${formData.AntiSismica},
-        Cp:${formData.Cp},
-        Localidad:${formData.Localidad},
+        Cerramiento: ${formData.Cerramiento},
+        Techo: ${formData.Techo},
+        Plantas: ${formData.Plantas},
+        Actividad: ${formData.Actividad},
+        SumaAseguradaIncendioContenido:${formData.SumaAseguradaIncendioContenido},
+        SumaAseguradaIncendioEdificio:${formData.SumaAseguradaIncendioEdificio},
       `,
-    };
-    
+      };
 
       emailjs
-        .send(
-          "service_cwze3jl",
-          "template_vgh47ra",
-          data,
-          "NOJB7y0wM8LRLnFeY",
-          
-        )
+        .send("service_cwze3jl", "template_vgh47ra", data, "NOJB7y0wM8LRLnFeY")
         .then(
           (result) => {
             console.log("SUCCESS!", result.text);
-            setPopupMessage("Solicitud de cotización enviada correctamente, en breve será contactado.");
+            setPopupMessage(
+              "Solicitud de cotización enviada correctamente, en breve será contactado."
+            );
             setPopupVisible(true);
-            setToHome(true)
+            setToHome(true);
           },
           (error) => {
             console.log("FAILED...", error.text);
@@ -121,22 +106,11 @@ const Hogar = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (type === "checkbox") {
-      const valueForFormData = checked ? "SI" : "NO"; 
-      console.log(valueForFormData)
-      setFormData({
-        ...formData,
-        [name]: valueForFormData,
-      });
-    } else {
       setFormData({
         ...formData,
         [name]: value,
       });
-    }
   };
-  
-  
 
   const closePopup = () => {
     setPopupVisible(false);
@@ -150,7 +124,7 @@ const Hogar = () => {
     <div className="container mx-auto p-4 flex flex-col md:flex-row justify-center">
       {popupVisible && <Popup message={popupMessage} onClose={closePopup} />}
       <div className="w-full md:w-1/2 md:pr-2">
-        <h1 className="text-2xl font-bold mb-4">COTIZACION DE HOGAR</h1>
+        <h1 className="text-2xl font-bold mb-4">COTIZACION DE COMERCIO</h1>
         <form ref={form} onSubmit={sendEmail}>
           {/* DATOS DE LA PERSONA */}
           <div className="flex flex-col md:flex-row">
@@ -209,39 +183,40 @@ const Hogar = () => {
           {/* DATOS DE LA VIVIENDA */}
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/3 pr-2">
-              <label htmlFor="TipoVivienda">Vivienda:</label>
+              <label htmlFor="Construccion">Construcción:</label>
               <ComboBox
-                id="TipoVivienda"
-                name="TipoVivienda"
-                value={{ label: formData.TipoVivienda, value: formData.TipoVivienda }}
+                id="Construccion"
+                name="Construccion"
+                value={{ label: formData.Construccion, value: formData.Construccion }}
                 onChange={(selectedOption) =>
-                  setFormData({ ...formData, TipoVivienda: selectedOption.value })
+                  setFormData({ ...formData, Construccion: selectedOption.value })
                 }
-                options={option.Hogar.TipoVivienda.map((item) => ({
+                
+                options={option.Comercio.Construccion.map((item) => ({
                   value: item,
                   label: item,
                 }))}
-                noOptionsMessage={() => "Sin coincidencias"}
+                isDisabled={popupVisible} 
                 styles={{
                   control: (provided, state) => ({
                     ...provided,
                     zIndex: popupVisible ? "-1" : "0",
                     borderColor:
-                      formData.TipoVivienda === "" ? "#ff0000" : "#718096",
+                      formData.Construccion === "" ? "#ff0000" : "#718096",
                   }),
                 }}
               />
             </div>
             <div className="md:w-1/3 pr-2">
-              <label htmlFor="Material">Material:</label>
+              <label htmlFor="Cerramiento">Cerramiento:</label>
               <ComboBox
-                id="Material"
-                name="Material"
-                value={{ label: formData.Material, value: formData.Material }}
+                id="Cerramiento"
+                name="Cerramiento"
+                value={{ label: formData.Cerramiento, value: formData.Cerramiento }}
                 onChange={(selectedOption) =>
-                  setFormData({ ...formData, TipoVivienda: selectedOption.value })
+                  setFormData({ ...formData, Cerramiento: selectedOption.value })
                 }
-                options={option.Hogar.Material.map((item) => ({
+                options={option.Comercio.Cerramiento.map((item) => ({
                   value: item,
                   label: item,
                 }))}
@@ -249,9 +224,9 @@ const Hogar = () => {
                 styles={{
                   control: (provided, state) => ({
                     ...provided,
-                    zIndex: popupVisible ? "-1" : "0",
                     borderColor:
-                      formData.Material === "" ? "#ff0000" : "#718096",
+                      formData.Cerramiento === "" ? "#ff0000" : "#718096",
+                    zIndex: popupVisible ? "-1" : "0",
                   }),
                 }}
               />
@@ -265,7 +240,7 @@ const Hogar = () => {
                 onChange={(selectedOption) =>
                   setFormData({ ...formData, Techo: selectedOption.value })
                 }
-                options={option.Hogar.Techo.map((item) => ({
+                options={option.Comercio.Techo.map((item) => ({
                   value: item,
                   label: item,
                 }))}
@@ -282,16 +257,40 @@ const Hogar = () => {
             </div>
           </div>
           <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2 pr-2">
-              <label htmlFor="Cerramiento">Cerramiento:</label>
+            <div className="md:w-1/3 pr-2">
+              <label htmlFor="Plantas">Cantidad de plantas:</label>
+              <div className="block w-full ml-6 p-1">
+                <button
+                  type="button"
+                  className="p-1 w-8 border rounded-full bg-blue-500 text-white"
+                  onClick={() => {
+                    if (numPlantas > 1) setNumPlantas(numPlantas - 1);
+                  }}
+                >
+                  -
+                </button>
+                <span className="mx-4">{numPlantas}</span>
+                <button
+                  type="button"
+                  className="p-1 border w-8 rounded-full bg-blue-500 text-white"
+                  onClick={() => {
+                    setNumPlantas(numPlantas + 1);
+                  }}
+                >
+                  +
+                </button>
+              </div>
+            </div>
+            <div className="md:w-2/3">
+              <label htmlFor="Actividad">Actividad:</label>
               <ComboBox
-                id="Cerramiento"
-                name="Cerramiento"
-                value={{ label: formData.Cerramiento, value: formData.Cerramiento }}
+                id="Actividad"
+                name="Actividad"
+                value={{ label: formData.Actividad, value: formData.Actividad }}
                 onChange={(selectedOption) =>
-                  setFormData({ ...formData, Cerramiento: selectedOption.value })
+                  setFormData({ ...formData, Actividad: selectedOption.value })
                 }
-                options={option.Hogar.Cerramiento.map((item) => ({
+                options={option.Comercio.Actividad.map((item) => ({
                   value: item,
                   label: item,
                 }))}
@@ -301,80 +300,13 @@ const Hogar = () => {
                     ...provided,
                     zIndex: popupVisible ? "-1" : "0",
                     borderColor:
-                      formData.Cerramiento === "" ? "#ff0000" : "#718096",
-                  }),
-                }}
-              />
-            </div>
-            <div className="md:w-1/2">
-              <label htmlFor="Construccion">Construcción:</label>
-              <ComboBox
-                id="Construccion"
-                name="Construccion"
-                value={{ label: formData.Construccion, value: formData.Construccion }}
-                onChange={(selectedOption) =>
-                  setFormData({ ...formData, Construccion: selectedOption.value })
-                }
-                options={option.Hogar.Construccion.map((item) => ({
-                  value: item,
-                  label: item,
-                }))}
-                noOptionsMessage={() => "Sin coincidencias"}
-                styles={{
-                  control: (provided, state) => ({
-                    ...provided,
-                    zIndex: popupVisible ? "-1" : "0",
-                    borderColor:
-                      formData.Construccion === "" ? "#ff0000" : "#718096",
+                      formData.Actividad === "" ? "#ff0000" : "#718096",
                   }),
                 }}
               />
             </div>
           </div>
-          <div className="mt-4 mb-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="SeguridadIncendio"
-                  name="SeguridadIncendio"
-                  onChange={handleChange}
-                  className="h-4 w-4 mr-2"
-                />
-                <label htmlFor="incendios">Detección Incendios</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="SeguridadVigilancia"
-                  name="SeguridadVigilancia"
-                  onChange={handleChange}
-                  className="mr-2 h-4 w-4"
-                />
-                <label htmlFor="Vigilancia">Vigilancia</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="SeguridadBlindadas"
-                  name="SeguridadBlindadas"
-                  onChange={handleChange}
-                  className="mr-2 h-4 w-4"
-                />
-                <label htmlFor="Blindada">Puertas blindadas</label>
-              </div>
-              <div className="flex items-center">
-                <input
-                  type="checkbox"
-                  id="SeguridadAlarma"
-                  name="SeguridadAlarma"
-                  onChange={handleChange}
-                  className="mr-2 h-4 w-4"
-                />
-                <label htmlFor="Alarma">Alarma monitoreada</label>
-              </div>
-            </div>
-          </div>
+          
 
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/4 pr-2">
@@ -410,63 +342,40 @@ const Hogar = () => {
               />
             </div>
           </div>
-          <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/3 pr-2">
-              <label htmlFor="SumaAsegurada">Suma Asegurada:</label>
+          <div className="flex flex-col md:flex-row border border-gray-500 mt-4 p-3">
+            <span>Suma Asegurada</span>
+            <div className="md:w-1/2 pr-2">
+              <label htmlFor="SumaAseguradaIncendioEdificio">Incendio Edificio:</label>
               <input
                 type="text"
-                id="SumaAsegurada"
-                name="SumaAsegurada"
+                id="SumaAseguradaIncendioEdificio"
+                name="SumaAseguradaIncendioEdificio"
                 placeholder="$95.000.000"
-                value={formData.SumaAsegurada}
+                value={formData.SumaAseguradaIncendioEdificio}
                 onChange={handleChange}
                 className={`block w-full p-2 border ${
-                  formData.SumaAsegurada === ""
+                  formData.SumaAseguradaIncendioEdificio === ""
                     ? "border-red-500"
                     : "border-gray-300"
                 } rounded-md`}
-                title="Ingrese el valor de su propiedad a asegurar"
+                title="Ingrese la suma por la cual quiere asegurar su comercio"
               />
             </div>
-            <div className="md:w-1/3 pr-2">
-              <label htmlFor="MetrosCub">Metros Cubiertos:</label>
+            <div className="md:w-1/2 pr-2">
+              <label htmlFor="SumaAseguradaIncendioContenido">Incendio contenido en general:</label>
               <input
                 type="text"
-                id="MetrosCub"
-                name="MetrosCub"
-                placeholder="65"
-                value={formData.MetrosCub}
+                id="SumaAseguradaIncendioContenido"
+                name="SumaAseguradaIncendioContenido"
+                placeholder="$20.000.000"
+                value={formData.SumaAseguradaIncendioContenido}
                 onChange={handleChange}
                 className={`block w-full p-2 border ${
-                  formData.MetrosCub === ""
+                  formData.SumaAseguradaIncendioContenido === ""
                     ? "border-red-500"
                     : "border-gray-300"
                 } rounded-md`}
-                title="Ingrese la cantidad de metros cubiertos de la vivienda."
-              />
-            </div>
-            <div className="md:w-1/3">
-              <label htmlFor="AntiSismica">Anti sísmica:</label>
-              <ComboBox
-                id="AntiSismica"
-                name="AntiSismica"
-                value={{ label: formData.AntiSismica, value: formData.AntiSismica }}
-                onChange={(selectedOption) =>
-                  setFormData({ ...formData, AntiSismica: selectedOption.value })
-                }
-                options={option.Hogar.AntiSismica.map((item) => ({
-                  value: item,
-                  label: item,
-                }))}
-                noOptionsMessage={() => "Sin coincidencias"}
-                styles={{
-                  control: (provided, state) => ({
-                    ...provided,
-                    zIndex: popupVisible ? "-1" : "0",
-                    borderColor:
-                      formData.AntiSismica === "" ? "#ff0000" : "#718096",
-                  }),
-                }}
+                title="Ingrese la suma por la cual quiere asegurar el contenido dentro de su comercio"
               />
             </div>
           </div>
@@ -533,4 +442,4 @@ const Hogar = () => {
   );
 };
 
-export default Hogar;
+export default Comercio;
