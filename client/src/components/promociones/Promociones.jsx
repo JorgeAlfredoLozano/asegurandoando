@@ -74,7 +74,12 @@ export default function Promociones() {
           style={{
             scrollBehavior: "smooth",
             maxWidth: "1200px",
-            overflowX: "hidden",
+            "-webkit-overflow-scrolling": "touch", // Habilitar desplazamiento táctil para iOS
+            "scrollbar-width": "none", // Ocultar la barra de desplazamiento en Firefox
+            "-ms-overflow-style": "none", // Ocultar la barra de desplazamiento en Internet Explorer y Edge
+            "&::-webkit-scrollbar": { // Ocultar la barra de desplazamiento en WebKit (Chrome, Safari)
+              display: "none",
+            },
           }}
         >
           {cardData.map((data, index) => (
