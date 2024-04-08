@@ -69,17 +69,16 @@ export default function Promociones() {
           <MdArrowLeft size={40} />
         </button>
         <div
-  ref={scrollRef}
-  className="flex space-x-4 overflow-x-auto hide-scrollbar"
-  style={{
-    maxWidth: "1200px",
-    "-webkit-overflow-scrolling": "touch", // Habilitar desplazamiento táctil para iOS
-    "&::-webkit-scrollbar": { // Ocultar la barra de desplazamiento en WebKit (Chrome, Safari)
-      display: "none",
-    },
-  }}
->
-
+          ref={scrollRef}
+          className="flex space-x-4 overflow-x-auto"
+          style={{
+            maxWidth: "1200px",
+            WebkitOverflowScrolling: "touch", // Habilitar desplazamiento táctil para iOS
+            overflowY: "hidden", // Ocultar barra de desplazamiento vertical en PC
+            scrollbarWidth: "none", // Ocultar barra de desplazamiento en Firefox
+            msOverflowStyle: "none", // Ocultar barra de desplazamiento en IE/Edge
+          }}
+        >
           {cardData.map((data, index) => (
             <div key={index} className="flex-shrink-0 w-64">
               <Card {...data} />
