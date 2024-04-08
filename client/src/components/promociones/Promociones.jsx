@@ -74,6 +74,9 @@ export default function Promociones() {
   style={{
     maxWidth: "1200px",
     "-webkit-overflow-scrolling": "touch", // Habilitar desplazamiento táctil para iOS
+    "&::-webkit-scrollbar": { // Ocultar la barra de desplazamiento en WebKit (Chrome, Safari)
+      display: "none",
+    },
   }}
 >
 
