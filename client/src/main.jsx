@@ -33,7 +33,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/transporte",
-        element: <Contacto />,
+        element: <Contacto origen="Transporte"/>,
       },
       {
         path: "/hogar",
@@ -45,11 +45,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/ap",
-        element: <Contacto />,
+        element: <Contacto origen="Ap"/>,
       },
       {
         path: "/salud",
-        element: <Contacto />,
+        element: <Contacto origen="Salud" />,
+      },
+      {
+        path: "/gestoria",
+        element: <Contacto origen="Gestoria" />,
       },
       {
         path: "/contacto",
