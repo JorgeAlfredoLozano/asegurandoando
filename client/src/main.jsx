@@ -13,6 +13,7 @@ import Autos from "./components/Pages/Seguros/Seccion2/Autos.jsx"
 import "./index.css";
 import Hogar from "./components/Pages/Seguros/Seccion2/Hogar.jsx";
 import Comercio from "./components/Pages/Seguros/Seccion2/Comercio.jsx";
+import Gestoria from "./components/Pages/Gestoría/Gestoria.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path: "/salud",
         element: <Contacto origen="Salud" />,
+      },
+      {
+        path: "/gestoria",
+        element: <Gestoria />,
       },
       {
         path: "/gestoria",
