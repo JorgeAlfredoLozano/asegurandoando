@@ -16,7 +16,7 @@ export default function AcercaDe() {
             className="absolute top-0 w-full h-full bg-center bg-cover"
             style={{
               backgroundImage:
-                "url('https://img.freepik.com/foto-gratis/amigos-revisando-mapa-viaje_23-2148320238.jpg?t=st=1712692181~exp=1712695781~hmac=d4a7848c5a5b93741790d10f62c7940d385bfedc36f88fd0801634de38279b0a&w=740')",
+                "url('https://img.freepik.com/foto-gratis/equipo-carta-contable-negocio-papel-hablando_1418-32.jpg?t=st=1712666757~exp=1712670357~hmac=8512aa4e25ac5704b7c2a20081f7873f73792a4fd3720b333605766e22957290&w=740')",
             }}
           >
             <span
@@ -29,10 +29,11 @@ export default function AcercaDe() {
               <div className="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                 <div className="pr-12">
                   <h1 className="text-white font-semibold text-5xl">
-                    Seguros Generales
+                    Bienvenidos a nuestra Gestoría Integral del Automotor.
                   </h1>
                   <p className="mt-4 text-lg text-gray-300">
-                    VIAJES | AUTOS | CASAS | COMERCIOS | AP
+                    Queremos ser tu aliado confiable para todos tus trámites
+                    vehiculares!
                   </p>
                 </div>
               </div>
@@ -66,22 +67,15 @@ export default function AcercaDe() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-300">
-                      <i className="fas fa-award text-xl">V</i>
+                      <i className="fas fa-award text-xl">T</i>
                     </div>
-                    <h6 className="text-xl font-semibold">
-                      Asistencia al Viajero
-                    </h6>
+                    <h6 className="text-xl font-semibold">Transferencias</h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      En nuestra empresa, colaboramos estrechamente con las
-                      principales compañías de asistencia al viajero para
-                      ofrecerte tranquilidad durante tu estancia en el
-                      extranjero. Nuestra asociación con los líderes del sector
-                      garantiza que puedas disfrutar de tu viaje sin
-                      preocupaciones, sabiendo que estás protegido ante
-                      cualquier imprevisto. Tu seguridad y bienestar son nuestra
-                      prioridad, por eso trabajamos incansablemente para
-                      brindarte la mejor atención y respaldo durante tu aventura
-                      en el exterior.
+                      Ya sea que estés por vender o comprar un vehículo, estamos
+                      aquí para acompañarte en todo el proceso de manera ágil,
+                      cómoda y segura. Nuestro objetivo es garantizar la
+                      integridad jurídica de tu operación, ofreciéndote un
+                      servicio confiable y transparente.
                     </p>
                   </div>
                 </div>
@@ -91,22 +85,17 @@ export default function AcercaDe() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
-                      <i className="fas fa-retweet text-xl">P</i>
+                      <i className="fas fa-retweet text-xl">I</i>
                     </div>
                     <h6 className="text-xl font-semibold">
-                      Seguros Patrimoniales
+                      Inscripción Inicial
                     </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      En nuestro servicio de seguros patrimoniales, trabajamos
-                      con las principales compañías del sector para ofrecerte
-                      una protección integral. Desde seguros para autos, motos,
-                      camiones, casas, hasta seguros para comercios, accidentes
-                      personales y de salud, nos aseguramos de que tu patrimonio
-                      esté completamente protegido. Con nuestra amplia gama de
-                      opciones y el respaldo de las mejores aseguradoras, puedes
-                      tener la tranquilidad de saber que estás cubierto ante
-                      cualquier eventualidad, permitiéndote vivir con seguridad
-                      y confianza en tu día a día.
+                      Si has adquirido un vehículo nuevo, estamos aquí para
+                      ayudarte con el proceso de inscripción inicial. Nos
+                      encargaremos de todos los trámites necesarios para que
+                      puedas disfrutar rápidamente de tu nuevo automóvil sin
+                      preocupaciones.
                     </p>
                   </div>
                 </div>
@@ -116,19 +105,17 @@ export default function AcercaDe() {
                 <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
                   <div className="px-4 py-5 flex-auto">
                     <div className="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-200">
-                      <i className="fas fa-fingerprint text-xl">S</i>
+                      <i className="fas fa-fingerprint text-xl">TG</i>
                     </div>
-                    <h6 className="text-xl font-semibold">Seguros de Salud</h6>
+                    <h6 className="text-xl font-semibold">
+                      Trámites en General
+                    </h6>
                     <p className="mt-2 mb-4 text-gray-600">
-                      En nuestro servicio de seguros de salud, nos enfocamos en
-                      brindarte una cobertura completa que incluye transplantes,
-                      prótesis y operaciones. Trabajamos para garantizar que
-                      tengas acceso a la atención médica que necesitas cuando
-                      más lo necesitas. Con nuestra amplia gama de opciones y el
-                      respaldo de las principales compañías aseguradoras, puedes
-                      confiar en que estaremos a tu lado para cuidar de tu salud
-                      y bienestar en todo momento. Tu tranquilidad es nuestra
-                      prioridad.
+                      Ya sea que necesites una cédula autorizada, resolver
+                      problemas de extravío u otros trámites relacionados con tu
+                      vehículo, estamos aquí para acompañarte en todo el
+                      proceso. Nos aseguraremos de que cada paso sea fácil y sin
+                      contratiempos, para que puedas manejar con tranquilidad.
                     </p>
                   </div>
                 </div>
@@ -138,27 +125,20 @@ export default function AcercaDe() {
             <div className="flex flex-wrap items-center mt-26 mb-16">
               <div className="w-full md:w-2/3 px-4 mr-auto ml-auto">
                 <div className="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
-                  <i className="fas fa-user-friends text-xl">OV</i>
+                  <i className="fas fa-user-friends text-xl"></i>
                 </div>
                 <h3 className="text-3xl mb-2 font-semibold leading-normal">
-                  Oficina Virtual
+                  Gestoría Lobrundo
                 </h3>
 
                 <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-700">
-                  En nuestra oficina virtual, nos dedicamos a garantizar tu
-                  seguridad, la de tu familia y la de tus bienes. Te ofrecemos
-                  una amplia gama de productos y seguros diseñados para
-                  satisfacer tus necesidades específicas. Nuestra metodología de
-                  trabajo te permite acceder a nuestros servicios desde la
-                  comodidad de tu hogar u oficina. A través de nuestra
-                  plataforma en línea, podrás recibir asesoramiento
-                  personalizado, evaluar diferentes opciones y contratar la
-                  póliza que mejor se adapte a tus necesidades y posibilidades,
-                  todo sin tener que moverte de donde estás. Tu tranquilidad es
-                  nuestra prioridad, y estamos aquí para facilitarte el proceso
-                  y brindarte la protección que mereces.
+                  Durante años, me decio a brindar asesoramiento en gestionar
+                  trámites del automotor para mis clientes. Con la misión de
+                  garantizar que cada persona que confía en mí pueda disfrutar
+                  plenamente de su vehículo sin preocuparse por los tediosos
+                  trámites administrativos.
                 </p>
-                {/* <p className="text-lg font-light leading-relaxed mt-0 mb-16 text-gray-700">
+                <p className="text-lg font-light leading-relaxed mt-0 mb-16 text-gray-700">
                   Con mi amplia experiencia y profundo conocimiento del sistema,
                   me encargo de todos los aspectos relacionados con la
                   documentación de vehículos. Desde la inscripción inicial hasta
@@ -167,13 +147,14 @@ export default function AcercaDe() {
                   brindarte un servicio integral, ágil y confiable. Mi objetivo
                   es que puedas dedicar más tiempo a lo que realmente importa:
                   conducir con seguridad y disfrutar plenamente de tu vehículo.
-                </p> */}
+                </p>
                 <a
                   className="font-bold text-gray-800 mt-1 mb-16 block mx-auto"
                   style={{ width: "fit-content" }}
                 >
                   Gracias por confiar en nosotros!
                 </a>
+
               </div>
 
               <div className="w-full md:w-1/3 px-4 mr-auto ml-auto">
@@ -203,10 +184,10 @@ export default function AcercaDe() {
                       María Laura Lobrundo
                     </h4>
                     <p className="text-md font-light mt-2 text-white">
-                      Productor Asesor de Seguros
+                      Mandataria Nacional del Automotor
                     </p>
                     <p className="text-md font-light mt-2 text-white">
-                      Mat 81581
+                      Mat M201727247320399DN
                     </p>
                   </blockquote>
                 </div>
