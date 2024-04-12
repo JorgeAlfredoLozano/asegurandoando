@@ -4,7 +4,14 @@
       "env": {
         "NODE_ENV": "production",
         "NPM_FLAGS": "--legacy-peer-deps"
-      }
+      },
+      "rewrites": [
+        {
+          "source": "/(.*)",
+          "destination": "/index.html"
+        }
+      ]
     }
+    
   }
   
