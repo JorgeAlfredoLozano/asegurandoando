@@ -14,6 +14,7 @@ import "./index.css";
 import Hogar from "./components/Pages/Seguros/Seccion2/Hogar.jsx";
 import Comercio from "./components/Pages/Seguros/Seccion2/Comercio.jsx";
 import Gestoria from "./components/Pages/Gestoría/Gestoria.jsx";
+import DatosAsegurar from "./components/Pages/Seguros/Seccion2/DatosAsegurar.jsx";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
       {
         path: "/gestoria",
         element: <Gestoria />,
+      },
+      {
+        path: "/datos",
+        element: <DatosAsegurar />,
       },
       {
         path: "/gestoria",
