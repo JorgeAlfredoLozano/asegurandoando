@@ -1,17 +1,14 @@
 {
-    "version": 2,
-    "build": {
-      "env": {
-        "NODE_ENV": "production",
-        "NPM_FLAGS": "--legacy-peer-deps"
-      },
-      "rewrites": [
-        {
-          "source": "/(.*)",
-          "destination": "/index.html"
-        }
-      ]
+  "version": 2,
+  "env": {
+    "NODE_ENV": "production",
+    "NPM_FLAGS": "--legacy-peer-deps"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
-    
-  }
-  
+  ]
+}
+
