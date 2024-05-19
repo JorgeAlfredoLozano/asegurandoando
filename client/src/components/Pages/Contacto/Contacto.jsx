@@ -129,7 +129,7 @@ const Contacto = ({ origen }) => {
     } else {
       // Si el nombre no está vacío y al menos uno de teléfono o correo electrónico tiene información, y el mensaje no está vacío, continuar con el envío del formulario
       const data = {
-        to_name: "Destinatario",
+        to_name: "Laura",
         from_name: "www.asegurandoando.com cotización de AUTO",
         message: `
           Nombre: ${formData.Nombre}

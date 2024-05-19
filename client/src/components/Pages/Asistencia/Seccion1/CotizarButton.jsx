@@ -14,14 +14,40 @@ const CotizarButton = () => {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
-  const [contacto, setContacto] = useState("");
+  const [contacto, setContacto] = useState("whatsapp");
   const cotizacion = useSelector(selectCotizacion);
   const dispatch = useDispatch();
   const fechaActual = new Date();
   const fechaIda = cotizacion.fechaIda;
   const fechaVuelta = cotizacion.fechaVuelta;
-  
-  
+  const [popupVisible, setPopupVisible] = useState(false);
+  const [popupMessage, setPopupMessage] = useState("");
+  const [toHome, setToHome] = useState(false);
+
+  const Popup = ({ message, onClose }) => (
+    <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50">
+      <div
+        className="bg-white mx-auto rounded-lg p-2 max-w-md"
+      >
+        <p className="text-xl text-justify">{message}</p>
+        <button
+          onClick={onClose}
+          className="mt-4 bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded"
+        >
+          OK
+        </button>
+        
+      </div>
+    </div>
+  );
+
+  const closePopup = () => {
+    setPopupVisible(false);
+    if (toHome) {
+      window.location.href = "/";
+    }
+  };
+
   const handleCotizarClick = () => {
     if (cotizacion.cantPasajeros.length == 0) {
       setmostrarMensaje(`La cantidad de pasajeros debe se mayor a cero`);
@@ -44,8 +70,8 @@ const CotizarButton = () => {
   const handleEnviarClick = () => {
     let nuevosMostrarCruz = {};
     const message = {
-      to_name: "Destinatario",
-      from_name: "www.asegurandoando.com",
+      to_name: "Laura",
+      from_name: "www.asegurandoando.com cotización Asistencia al Viajero",
       message: `
         Nombre: ${nombre}
         Email: ${email}
@@ -54,7 +80,8 @@ const CotizarButton = () => {
         Destino: ${cotizacion.destino}
         Cantidad de pasajeros: ${cotizacion.cantPasajeros.length}
         Edades de los pasajeros: ${cotizacion.cantPasajeros.join(", ")}
-        Fecha de salida: ${cotizacion.fechaSalida}
+        Fecha de Ida: ${cotizacion.fechaIda}
+        Fecha de Regreso: ${cotizacion.fechaVuelta}
       `,
     };
     if (nombre == "") {
@@ -80,9 +107,14 @@ const CotizarButton = () => {
       !mostrarCruz.telefono &&
       !mostrarCruz.email
     ) {
+
       emailjs
         .send("service_cwze3jl", "template_vgh47ra", message, "NOJB7y0wM8LRLnFeY")
         .then((response) => {
+          setPopupMessage("Cotización enviada correctamente, en breve nos estaremos poniendo en contacto.");
+          setPopupVisible(true);
+          // Redirigir a la página principal después de 3 segundos
+          setToHome(true);
           console.log("Correo electrónico enviado con éxito:", response);
         })
         .catch((error) => {
@@ -108,7 +140,7 @@ const CotizarButton = () => {
           Cotizar
         </button>
       </div>
-
+      {popupVisible && <Popup message={popupMessage} onClose={closePopup} />}
       {mostrarPopup && (
         <div className="p-1/2 bg-white border border-gray-300 rounded-md mt-2">
           <input
