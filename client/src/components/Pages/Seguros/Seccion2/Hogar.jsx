@@ -59,8 +59,7 @@ const Hogar = () => {
 
     // Validar campos requeridos
     for (const field in formData) {
-      if (formData[field] === "") {
-        // Si un campo está vacío, establecer la bandera ok en falso y mostrar mensaje de error
+      if (field !== "Mensaje" && field !== "Telefono" && field !== "Email" && formData[field] === "") {
         ok = false;
         setPopupMessage(`El campo "${field}" es requerido`);
         setPopupVisible(true);
@@ -68,56 +67,64 @@ const Hogar = () => {
       }
     }
 
-    if (ok) {
-      // Si todos los campos están completos, enviar el formulario
-
-    const data = {
-      to_name: "María Laura",
-      from_name: "www.asegurandoando.com.ar / cotización de HOGAR",
-      message: `
-        Nombre: ${formData.Nombre}
-        Teléfono: ${formData.Telefono}
-        Correo Electrónico: ${formData.Email}
-        Mensaje: ${formData.Mensaje}
-        MetrosCub: ${formData.MetrosCub},
-        SumaAsegurada:${formData.SumaAsegurada},
-        TipoVivienda: ${formData.TipoVivienda},
-        Material: ${formData.Material},
-        Techo: ${formData.Techo},
-        Cerramiento: ${formData.Cerramiento},
-        Construccion: ${formData.Construccion},
-        SeguridadAlarma: ${formData.SeguridadAlarma},
-        SeguridadVigilancia: ${formData.SeguridadVigilancia},
-        SeguridadBlindada: ${formData.SeguridadBlindada},
-        SeguridadIncendio: ${formData.SeguridadIncendio},
-        AntiSismica:${formData.AntiSismica},
-        Cp:${formData.Cp},
-        Localidad:${formData.Localidad},
-      `,
-    };
-    
-
-      emailjs
-        .send(
-          "service_cwze3jl",
-          "template_vgh47ra",
-          data,
-          "NOJB7y0wM8LRLnFeY",
-          
-        )
-        .then(
-          (result) => {
-            console.log("SUCCESS!", result.text);
-            setPopupMessage("Solicitud de cotización enviada correctamente, en breve será contactado.");
-            setPopupVisible(true);
-            setToHome(true)
-          },
-          (error) => {
-            console.log("FAILED...", error.text);
-          }
-        );
+    // Validar que al menos uno de los campos de contacto (Telefono o Email) esté completo
+    if (formData.Telefono === "" && formData.Email === "") {
+      ok = false;
+      setPopupMessage('Debe proporcionar al menos un Teléfono o un Correo Electrónico para poder acercarle la cotización.');
+      setPopupVisible(true);
     }
-  };
+
+
+
+    if (ok) {
+        // Si todos los campos están completos, enviar el formulario
+
+        const data = {
+            to_name: "María Laura",
+            from_name: "www.asegurandoando.com.ar / cotización de HOGAR",
+            message: `
+                Nombre: ${formData.Nombre}
+                Teléfono: ${formData.Telefono}
+                Correo Electrónico: ${formData.Email}
+                Mensaje: ${formData.Mensaje}
+                MetrosCub: ${formData.MetrosCub},
+                SumaAsegurada: ${formData.SumaAsegurada},
+                TipoVivienda: ${formData.TipoVivienda},
+                Material: ${formData.Material},
+                Techo: ${formData.Techo},
+                Cerramiento: ${formData.Cerramiento},
+                Construccion: ${formData.Construccion},
+                SeguridadAlarma: ${formData.SeguridadAlarma},
+                SeguridadVigilancia: ${formData.SeguridadVigilancia},
+                SeguridadBlindada: ${formData.SeguridadBlindada},
+                SeguridadIncendio: ${formData.SeguridadIncendio},
+                AntiSismica: ${formData.AntiSismica},
+                Cp: ${formData.Cp},
+                Localidad: ${formData.Localidad},
+            `,
+        };
+
+        emailjs
+            .send(
+                "service_cwze3jl",
+                "template_vgh47ra",
+                data,
+                "NOJB7y0wM8LRLnFeY"
+            )
+            .then(
+                (result) => {
+                    console.log("SUCCESS!", result.text);
+                    setPopupMessage("Solicitud de cotización enviada correctamente, en breve será contactado.");
+                    setPopupVisible(true);
+                    setToHome(true);
+                },
+                (error) => {
+                    console.log("FAILED...", error.text);
+                }
+            );
+    }
+};
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -239,7 +246,7 @@ const Hogar = () => {
                 name="Material"
                 value={{ label: formData.Material, value: formData.Material }}
                 onChange={(selectedOption) =>
-                  setFormData({ ...formData, TipoVivienda: selectedOption.value })
+                  setFormData({ ...formData, Material: selectedOption.value })
                 }
                 options={option.Hogar.Material.map((item) => ({
                   value: item,
