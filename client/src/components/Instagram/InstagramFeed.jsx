@@ -30,7 +30,6 @@ const InstagramFeed = () => {
 
   return (
     <div>
-        <p>hola</p>
       {posts.map(post => (
         <div key={post.id}>
           {post.media_type === 'IMAGE' && <img src={post.media_url} alt={post.caption} />}

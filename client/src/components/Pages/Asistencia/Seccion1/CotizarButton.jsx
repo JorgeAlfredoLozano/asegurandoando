@@ -111,7 +111,7 @@ const CotizarButton = () => {
       emailjs
         .send("service_cwze3jl", "template_vgh47ra", message, "NOJB7y0wM8LRLnFeY")
         .then((response) => {
-          setPopupMessage("Cotización enviada correctamente, en breve nos estaremos poniendo en contacto.");
+          setPopupMessage("Solicitud de cotización enviada correctamente, en breve nos estaremos poniendo en contacto.");
           setPopupVisible(true);
           // Redirigir a la página principal después de 3 segundos
           setToHome(true);
