@@ -7,6 +7,32 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
+  safelist: [
+    // Safelist for text sizes
+    'text-4xl', 'md:text-6xl', 'lg:text-8xl',
+    'text-3xl', 'md:text-5xl', 'lg:text-6xl',
+    'text-gray-300', 'text-white', 'font-bold',
+
+    // Safelist for paragraphs and spacing
+    'text-lg', 'md:text-xl', 'lg:text-3xl',
+    'max-w-5xl', 'mx-auto',
+
+    // Safelist for buttons and colors
+    'bg-[#0aeb08]', 'text-white', 'rounded-lg',
+    'px-4', 'md:px-6', 'py-2',
+
+    // Safelist for flex layout
+    'flex', 'flex-col', 'justify-center', 'items-center',
+
+    // Additional safelist for positioning
+    'absolute', 'top-20', 'relative',
+
+    // Safelist for background and overlay
+    'w-full', 'h-full', 'inset-0', 'bg-black', 'opacity-40',
+
+    // Width and height control
+    'w-full', 'h-screen', 'max-h-[80vh]'
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -30,8 +56,7 @@ export default {
           2: "#4285F4",   // Azul de Google, posiblemente utilizado como acento
           3: "#93c8ed",   // Azul claro, posiblemente utilizado como fondo de navegación
         },
-      }
-      ,
+      },
       keyframes: {
         loadIn: {
           "0%": { transform: "translateX(-100%)" },
@@ -41,10 +66,8 @@ export default {
       animation: {
         loadIn: "loadIn 7s linear",
       },
-      theme: {
-        extend: {borderRadius: {
-          '50': '50px',
-        },},
+      borderRadius: {
+        '50': '50px',
       },
     },
   },
