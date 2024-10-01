@@ -14,6 +14,10 @@ const Asistencia = () => {
     formRef.current?.scrollIntoView({ behavior: "smooth" }); // Acción de scroll suave
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0); 
+  }, []);
+
   return (
     <div>
       <div
@@ -143,7 +147,7 @@ const Asistencia = () => {
         ref={formRef} // Referenciamos el formulario
       >
         <h2 className="text-4xl font-bold mb-2 text-center leading-normal">
-          Llena el formulario y te contactaremos con tu cotización
+          Completa el formulario y te contactaré con tu cotización
         </h2>
         <h3 className="text-red-500 text-2xl font-bold mb-2 text-center leading-normal  md:text-xl lg:text-1xl">
           IMPORTANTE: Si buscas un seguro de bajo costo y con prestaciones
