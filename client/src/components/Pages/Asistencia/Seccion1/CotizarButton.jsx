@@ -111,7 +111,7 @@ const CotizarButton = () => {
       emailjs
         .send("service_cwze3jl", "template_vgh47ra", message, "NOJB7y0wM8LRLnFeY")
         .then((response) => {
-          setPopupMessage("Cotización enviada correctamente, en breve nos estaremos poniendo en contacto.");
+          setPopupMessage("Solicitud de cotización enviada correctamente, en breve nos estaremos poniendo en contacto.");
           setPopupVisible(true);
           // Redirigir a la página principal después de 3 segundos
           setToHome(true);
@@ -131,7 +131,7 @@ const CotizarButton = () => {
 
   return (
     <div className="w-full">
-      <div className="py-5 flex justify-center items-center">
+      {!mostrarPopup && <div className="py-5 flex justify-center items-center">
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
           style={{ height: "40px" }}
@@ -139,7 +139,7 @@ const CotizarButton = () => {
         >
           Cotizar
         </button>
-      </div>
+      </div>}
       {popupVisible && <Popup message={popupMessage} onClose={closePopup} />}
       {mostrarPopup && (
         <div className="p-1/2 bg-white border border-gray-300 rounded-md mt-2">

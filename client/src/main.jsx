@@ -15,6 +15,7 @@ import Hogar from "./components/Pages/Seguros/Seccion2/Hogar.jsx";
 import Comercio from "./components/Pages/Seguros/Seccion2/Comercio.jsx";
 import Gestoria from "./components/Pages/Gestoría/Gestoria.jsx";
 import DatosAsegurar from "./components/Pages/Seguros/Seccion2/DatosAsegurar.jsx";
+import AsistenciaCotizar from "./components/Pages/Asistencia/AsistenciaCotizar.jsx";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: "/asistencia",
         element: <Asistencia />,
+      },
+      {
+        path: "/asistencia/cotizar",
+        element: <AsistenciaCotizar />,
       },
       {
         path: "/autos",

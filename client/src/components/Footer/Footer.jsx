@@ -1,5 +1,7 @@
 import logo from "../../assets/LOGOweb.png";
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import pdfCertificado from "../../assets/27247320399 - 09082024131624.pdf";
 
 function Footer() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -102,22 +104,29 @@ function Footer() {
                 Nosotros
               </p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Acerca de{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Contactos{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
+                <Link
+                  className="flex justify-center hover:opacity-75"
+                  to="/seguros"
+                >
+                  Acerca de
+                </Link>
+                <Link
+                  className="flex justify-center hover:opacity-75"
+                  to="/contacto"
+                >
+                  Contacto
+                </Link>
+               
+                <a
+                  className="flex justify-center hover:opacity-75"
+                  href="https://www.google.com/maps/place/Mar%C3%ADa+Laura+Lobrundo+Seguros/@-36.7690301,-59.8596493,15z/data=!4m2!3m1!1s0x0:0x71b4f69a93b7abcb?sa=X&ved=1t:2428&ictx=111"  // Reemplaza con tus coordenadas
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   {" "}
                   Ubicación{" "}
                 </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Careers{" "}
-                </a>
+
               </nav>
             </div>
             <div>
@@ -125,26 +134,24 @@ function Footer() {
                 Servicios
               </p>
               <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Seguros Generales{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Seguros de Viajes{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Asesoría de flotas{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Gestoría{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Trámites{" "}
-                </a>
+                 <Link
+                  className="flex justify-center hover:opacity-75"
+                  to="/seguros"
+                >
+                  Seguros Generales
+                </Link>
+                <Link
+                  className="flex justify-center hover:opacity-75"
+                  to="/asistencia"
+                >
+                  Asistencia al Viajero
+                </Link>
+                <Link
+                  className="flex justify-center hover:opacity-75"
+                  to="/gestoria"
+                >
+                  Gestoría
+                </Link>
               </nav>
             </div>
             <div>
@@ -166,6 +173,17 @@ function Footer() {
                 </a>
                 <a className="flex justify-center hover:opacity-75" href>
                   {" "}
+                  Mercantil Andina{" "}
+                </a>
+              </nav>
+            </div>
+            <div>
+              <p className="flex justify-center font-medium text-white">
+                +
+              </p>
+              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
+              <a className="flex justify-center hover:opacity-75" href>
+                  {" "}
                   Triunfo Seguros{" "}
                 </a>
                 <a className="flex justify-center hover:opacity-75" href>
@@ -176,28 +194,9 @@ function Footer() {
                   {" "}
                   Nación Seguros{" "}
                 </a>
-              </nav>
-            </div>
-            <div>
-              <p className="flex justify-center font-medium text-white">
-                Legal
-              </p>
-              <nav className="flex flex-col mt-4 space-y-2 text-sm text-gray-200">
                 <a className="flex justify-center hover:opacity-75" href>
                   {" "}
-                  Privacy Policy{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Terms &amp; Conditions{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Returns Policy{" "}
-                </a>
-                <a className="flex justify-center hover:opacity-75" href>
-                  {" "}
-                  Accessibility{" "}
+                  BBVA Seguros {" "}
                 </a>
               </nav>
             </div>
@@ -206,11 +205,12 @@ function Footer() {
         <p className="flex justify-center mt-8 text-xs text-gray-200">
           © 2024 Derechos reservados a www.asegurandoando.com.ar
         </p>
-        <p className="flex justify-center text-xs text-gray-200">
+
+        <a href={pdfCertificado} target="_blank" rel="noopener noreferrer" className="flex justify-center text-xs text-gray-200">
           de María Laura Lobrundo - Productor de Seguros mat. 81581
-        </p>
+        </a>
         <p className="flex justify-center text-xs text-blue-200">
-          Desarrollado por Jorge Lozano - puntonetazul@gmail.com
+          Desarrollado por www.desarrollar.com.ar
         </p>
       </div>
     </footer>

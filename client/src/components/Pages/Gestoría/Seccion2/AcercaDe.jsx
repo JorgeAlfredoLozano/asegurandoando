@@ -132,11 +132,10 @@ export default function AcercaDe() {
                 </h3>
 
                 <p className="text-lg font-light leading-relaxed mt-4 mb-2 text-gray-700">
-                  Durante años, me decio a brindar asesoramiento en gestionar
-                  trámites del automotor para mis clientes. Con la misión de
-                  garantizar que cada persona que confía en mí pueda disfrutar
-                  plenamente de su vehículo sin preocuparse por los tediosos
-                  trámites administrativos.
+                Durante años, me he dedicado a proporcionar asesoramiento experto en la gestión 
+                de trámites del automotor para mis clientes. Mi misión es asegurarme de que cada 
+                persona que confía en mis servicios pueda disfrutar plenamente de su vehículo 
+                sin preocuparse por los complejos y tediosos trámites administrativos.
                 </p>
                 <p className="text-lg font-light leading-relaxed mt-0 mb-16 text-gray-700">
                   Con mi amplia experiencia y profundo conocimiento del sistema,

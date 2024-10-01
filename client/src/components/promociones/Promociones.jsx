@@ -26,13 +26,13 @@ export default function Promociones() {
       photo: image3,
       title: "",
       date: "",
-      location: "",
+      link: "contacto",
     },
     {
       photo: image4,
       title: "",
       date: "",
-      location: "",
+      link: "asistencia",
     },
     {
       photo: image5,
