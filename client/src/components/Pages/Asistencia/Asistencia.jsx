@@ -32,10 +32,10 @@ const Asistencia = () => {
 
         {/* Contenido centrado */}
         <div className="absolute top-20 flex flex-col items-center text-center px-4 space-y-4">
-          <h1 className="text-white text-4xl md:text-6xl lg:text-8xl font-bold">
+          <h1 className="text-white text-3xl md:text-5xl lg:text-7xl font-bold">
             CONTRATÁ AHORA TU ASISTENCIA
           </h1>
-          <h2 className="text-[#0aeb08] text-3xl md:text-5xl lg:text-6xl font-bold">
+          <h2 className="text-[#0aeb08] text-3xl md:text-5xl lg:text-5xl font-bold">
             ¡APROVECHA LOS DESCUENTOS Y FACILIDADES DE PAGO!
           </h2>
           <h3 className="text-gray-300 text-3xl font-bold">
