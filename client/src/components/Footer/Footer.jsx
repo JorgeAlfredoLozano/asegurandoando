@@ -2,6 +2,8 @@ import logo from "../../assets/LOGOweb.png";
 import React, { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import pdfCertificado from "../../assets/27247320399 - 09082024131624.pdf";
+import SSNFooterWeb from "./SSNFooterWeb";
+import SSNFooterMobile from "./SSNFooterMobile";
 
 function Footer() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -18,6 +20,7 @@ function Footer() {
     };
   }, []);
   return (
+    <>
     <footer className="flex justify-center bg-gradient-to-b from-black to-secondary-1">
       <div className="max-w-screen-xl px-4 py-1 mx-auto sm:px-6 lg:px-8">
         <div className="mt-4 grid grid-cols-1 gap-8 lg:grid-cols-3">
@@ -196,7 +199,7 @@ function Footer() {
                 </a>
                 <a className="flex justify-center hover:opacity-75" href>
                   {" "}
-                  BBVA Seguros {" "}
+                  ATM Seguros {" "}
                 </a>
               </nav>
             </div>
@@ -213,7 +216,17 @@ function Footer() {
           Desarrollado por www.desarrollar.com.ar
         </p>
       </div>
-    </footer>
+      </footer>
+      
+
+      {!isMobile ? <SSNFooterWeb /> : <SSNFooterMobile />}
+
+
+
+
+
+    </>
+
   );
 }
 

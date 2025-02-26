@@ -3,6 +3,8 @@ import Promociones from "../promociones/Promociones.jsx"
 import Categories from "../categories/Categories.jsx"
 import { heroData } from "./mockData";
 import InstagramFeed from "../Instagram/InstagramFeed.jsx";
+import Companys from "../Companys/Companys.jsx";
+
 
 
 const Home = () => {
@@ -12,7 +14,8 @@ const Home = () => {
       <Categories />
       <InstagramFeed />
       <Promociones />
-
+      <Companys />
+      
       {/* <ProximosEventos /> */}
     </main>
   );
